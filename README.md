@@ -39,5 +39,5 @@ The following is complete:
   Login.
 Desig/interface on calender has started.
 New class in visual.
-Reseach on printing specifib dates in a specific week.
+Reseach on printing specific dates in a specific week.
 Repository has bin made and code started to upload.
