@@ -12,3 +12,5 @@ public class HairsaloonController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 }
+
+//button not there.
