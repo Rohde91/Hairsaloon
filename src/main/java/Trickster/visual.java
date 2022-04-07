@@ -73,7 +73,7 @@ public class visual implements ActionListener {
             String password = passwordField.getText();
             // Employee user2 = new Employee (email,password);
 
-            com.company.mysql msql = com.company.mysql.getInstance();
+            Trickster.mysql msql = Trickster.mysql.getInstance();
             msql.TryUserLogin(email,password);
 
         /*mysql msql = mysql.getInstance();
