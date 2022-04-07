@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <AnchorPane prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
@@ -43,7 +42,7 @@
                </font>
             </Label>
             <TextField layoutX="548.0" layoutY="162.0" prefHeight="35.0" prefWidth="175.0" />
-            <Button layoutX="425.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Login">
+            <Button fx:id="loginButton" layoutX="425.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginUserActionButton" prefHeight="35.0" prefWidth="150.0" text="Login">
                <font>
                   <Font size="24.0" />
                </font>
