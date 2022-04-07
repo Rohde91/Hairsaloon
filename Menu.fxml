@@ -9,7 +9,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <AnchorPane prefHeight="701.0" prefWidth="150.0" BorderPane.alignment="CENTER">
@@ -20,25 +19,25 @@
                   <Image url="@../../../../Downloads/pngwing.com.png" />
                </image>
             </ImageView>
-            <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" text="Opret aftale" />
-            <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" mnemonicParsing="false" text="Find aftale" />
-            <Button fx:id="findCostumer" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" text="Find kunde" />
-            <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" text="Ret aftale" />
-            <Button layoutX="10.0" layoutY="347.0" mnemonicParsing="false" text="Ret aftaler" />
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" text="Opret kunde" />
-            <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" text="Ret kunde" />
-            <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" text="Mine aftaler" />
+            <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
+            <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
+            <Button fx:id="findCostumer" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
+            <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
+            <Button layoutX="10.0" layoutY="347.0" mnemonicParsing="false" onAction="#editCostumerBookingScene" text="Ret aftaler" />
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#createCostumerScene" text="Opret kunde" />
+            <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" onAction="#editCostumerScene" text="Ret kunde" />
+            <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
             <Label layoutX="10.0" layoutY="423.0" text="Adminestrator">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="10.0" layoutY="450.0" mnemonicParsing="false" text="Ret behandling" />
-            <Button layoutX="10.0" layoutY="475.0" mnemonicParsing="false" text="Slet behandling" />
-            <Button layoutX="10.0" layoutY="500.0" mnemonicParsing="false" text="Opret behandling" />
-            <Button layoutX="10.0" layoutY="525.0" mnemonicParsing="false" text="Opret medarbejder" />
-            <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" text="Ret medarbejder" />
-            <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" text="Slet medarbejder" />
+            <Button layoutX="10.0" layoutY="450.0" mnemonicParsing="false" onAction="#editTreatment" text="Ret behandling" />
+            <Button layoutX="10.0" layoutY="475.0" mnemonicParsing="false" onAction="#deleteTreatment" text="Slet behandling" />
+            <Button layoutX="10.0" layoutY="500.0" mnemonicParsing="false" onAction="#createTreatment" text="Opret behandling" />
+            <Button layoutX="10.0" layoutY="525.0" mnemonicParsing="false" onAction="#createNewEmployee" text="Opret medarbejder" />
+            <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" onAction="#editEmployee" text="Ret medarbejder" />
+            <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Slet medarbejder" />
             <Label layoutX="10.0" layoutY="270.0" text="Medarbejder">
                <font>
                   <Font size="18.0" />
