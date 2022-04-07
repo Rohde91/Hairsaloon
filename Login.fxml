@@ -11,14 +11,13 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.HairsaloonController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <AnchorPane prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="327.0" fitWidth="499.0" layoutX="251.0" layoutY="12.0">
                <image>
-                  <Image url="https://github.com/Rohde91/Hairsaloon/blob/master/png-transparent-letter-m-others.png?raw=true" />
-                  <Image url="https://raw.github.com/Rohde91/Hairsaloon/blob/master/png-transparent-letter-m-others.png"/>
+                  <Image url="@../../../../Downloads/pngwing.com.png" />
                </image>
             </ImageView>
          </children>
