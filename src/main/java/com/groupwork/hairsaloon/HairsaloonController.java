@@ -9,8 +9,7 @@ import javafx.scene.control.TextField;
 public class HairsaloonController {
     public TextField usernameInputfield;
     public PasswordField passwordInputfield;
-    @FXML
-    private Label welcomeText;
+
 
     @FXML
 
