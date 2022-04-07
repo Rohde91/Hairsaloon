@@ -7,7 +7,7 @@ package Trickster;
  * Højreklik connection navn til højre i Intellij -> Properties -> Advanced set både connection og driver til "requireSSL" til NO
  */
 
-import com.mysql.cj.util.DnsSrv;
+//import Trickster.mysql.cj.util.DnsSrv;
 
 import java.sql.*;
 
@@ -97,8 +97,8 @@ public class mysql {
         return customer;
     }
 
-    public com.company.Employee BuildEmployee(ResultSet rs) throws SQLException {
-        com.company.Employee employee = new com.company.Employee();
+    public Trickster.Employee BuildEmployee(ResultSet rs) throws SQLException {
+        Trickster.Employee employee = new Trickster.Employee();
         while (rs.next()) {
             employee.setName(rs.getString("Name"));
             employee.setEmail(rs.getString("Email"));
