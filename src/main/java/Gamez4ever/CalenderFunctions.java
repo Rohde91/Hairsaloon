@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
 import java.util.*;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 //TODO få den til at give datoerne på en bestemt uge og ikke den første i hver måned, med 4+ dage.
 //TODO få input fra databasen.
@@ -15,13 +15,15 @@ class CalendarFunctions {
     private static boolean runable = true;
     public static String day, year, month, pyear;
     static Scanner scn = new Scanner(System.in);
-    static Calendar calndr1 = (Calendar) Calendar.getInstance();
+    static Calendar calndr1 = Calendar.getInstance();
 
     public static void main(String[] args) {
-        System.out.println("Hvilken kalender funktion vil du bruge? \n" +
-                "1) ChooseDate (vælg dato og få alle dage i ugen.)\n" +
-                "2) printMonth (print alle månedens dage.)\n" +
-                "3) printYear (vælg en måned og print alle dage i et år.)\n");
+        System.out.println("""
+                Hvilken kalender funktion vil du bruge?\s
+                1) ChooseDate (vælg dato og få alle dage i ugen.)
+                2) printMonth (print alle månedens dage.)
+                3) printYear (vælg en måned og print alle dage i et år.)
+                """);
         String choice = scn.next();
 
         switch (choice) {
@@ -37,7 +39,7 @@ class CalendarFunctions {
                     System.out.println("Hvilken måned vil du have alle datoer i?");
                     String y = scn.next();
                     try {
-                        if ((Integer.parseInt(y) >= 1 && Integer.parseInt(y) <= 12) == true) {
+                        if ((Integer.parseInt(y) >= 1 && Integer.parseInt(y) <= 12)) {
                             printYear(y);
                             runable = false;
                         }
@@ -49,6 +51,7 @@ class CalendarFunctions {
     }
 
     public static void printYear(String y) {
+
         runable = true;
 
         calndr1.clear();
@@ -56,7 +59,7 @@ class CalendarFunctions {
             System.out.println("\n--PrintYear--\nIndtast År.\nEksempel 2022");
             pyear = scn.next();
             try {
-                if ((Integer.parseInt(pyear) >= 1) == true)
+                if ((Integer.parseInt(pyear) >= 1))
                     runable = false;
             } catch (NumberFormatException e) {
                 System.out.println("Wrong input!");
@@ -65,7 +68,7 @@ class CalendarFunctions {
         calndr1.set(Calendar.YEAR, Integer.parseInt(pyear));
 
         int intMonth = Integer.parseInt(y) - 1;
-        List<List<String>> yearlist = new ArrayList<List<String>>();
+        List<List<String>> yearlist = new ArrayList<>();
 
         for (int x = 1; x <= 12; x++) {
             List<String> monthlist = new ArrayList<>();
@@ -73,6 +76,22 @@ class CalendarFunctions {
 
             for (int i = 1; i < calndr1.getActualMaximum(Calendar.DAY_OF_MONTH) + 1; i++) {
                 calndr1.set(Calendar.DAY_OF_MONTH, i);
+                switch (calndr1.get(Calendar.DAY_OF_WEEK)) {
+                    case 1 -> { //Sunday
+                        calndr1.set(Calendar.HOUR, 0);
+                        calndr1.set(Calendar.MINUTE, 0);
+                    } //Monday
+                    //Saturday
+                    //Thursday
+                    case 2, 7, 5, 4 -> { //Wednesday
+                        calndr1.set(Calendar.HOUR, 9);
+                        calndr1.set(Calendar.MINUTE, 0);
+                    } //Tuesday
+                    case 3, 6 -> { //Friday
+                        calndr1.set(Calendar.HOUR, 8);
+                        calndr1.set(Calendar.MINUTE, 30);
+                    }
+                }
                 System.out.println(calndr1.getTime());
                 monthlist.add(String.valueOf(calndr1.getTime()));
             }
@@ -111,7 +130,7 @@ class CalendarFunctions {
         String year = scn.next();
 
         //Omdanner inputs til LocalDate og bruger denne til at finde uge nummeret.
-        LocalDate dt = LocalDate.of(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
+        LocalDate dt = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
         TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
         int weekNumber = dt.get(woy);
         System.out.println(dt.getDayOfWeek() + " uge: " + weekNumber);
