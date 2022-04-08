@@ -9,6 +9,7 @@ package Trickster;
 
 //import Trickster.mysql.cj.util.DnsSrv;
 
+
 import java.sql.*;
 
 //TODO sørg for at alle sql kald bruger PreparedStatement.
@@ -125,6 +126,7 @@ public class mysql {
                     "' AND Password='" + password +
                     "'";
             ResultSet checkLoginRS = statement.executeQuery(sql);
+
 /*           System.out.println(checkLoginRS.getString("Email"));
 
             if (!checkLoginRS.isBeforeFirst() ) {

@@ -82,4 +82,5 @@ public class visual implements ActionListener {
         msql.logUserIn(user1.email,user1.password);*/
         }
     }
+
 }

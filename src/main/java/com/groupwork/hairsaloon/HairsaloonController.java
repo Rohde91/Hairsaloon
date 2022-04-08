@@ -29,6 +29,8 @@ public class HairsaloonController {
         Trickster.mysql msql = Trickster.mysql.getInstance();
         msql.TryUserLogin(email,password);
 
+        //make a switch for each type of user
+
         // Switch scene to Menu Scene
         if (msql.userType(email).equals("Employee")||msql.userType(email).equals("Customer")){
             try {
