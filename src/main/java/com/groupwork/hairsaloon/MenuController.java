@@ -1,5 +1,6 @@
 package com.groupwork.hairsaloon;
 //com.groupwork.hairsaloon.MenuController
+import Trickster.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -102,6 +103,8 @@ public class MenuController {
     @FXML
     void terminateSession(ActionEvent event) {
         try {
+            HairsaloonController hc = new HairsaloonController();
+            hc.user = null;
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

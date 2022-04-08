@@ -1,5 +1,6 @@
 package com.groupwork.hairsaloon;
 
+import Trickster.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import java.util.Objects;
 public class HairsaloonController {
     public TextField usernameInputfield;
     public PasswordField passwordInputfield;
+    public User user;
 
 
 
@@ -25,7 +27,7 @@ public class HairsaloonController {
         String email = usernameInputfield.getText();
         String password = passwordInputfield.getText();
         Trickster.mysql msql = Trickster.mysql.getInstance();
-        msql.TryUserLogin(email, password);
+        user=msql.TryUserLogin(email, password);
 
         //scene swicht to Menu
         if (msql.userType(email).equals("Employee") || msql.userType(email).equals("Customer")) {
