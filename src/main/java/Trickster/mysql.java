@@ -333,4 +333,21 @@ public class mysql {
     }
     //---------------------------------------------------------------------------------------------------------------
 
+
+    public void createBookingInSQL (Booking booking) {
+        try {
+            PreparedStatement addToCustomerTable = connection.
+                    prepareStatement("INSERT INTO Booking(fk_CustomerID, Time, Date, fk_treatmentID, fk_EmployeeID) VALUES " +
+                            "('" + booking.getFk_CostumerID()
+                            + "', '" + booking.getTime()
+                            + "', '" + booking.getDate()
+                            + "', '" + booking.getFk_TreatmentID()
+                            + "', '" + booking.getFk_EmployeeID()
+                            + "')");
+            addToCustomerTable.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
