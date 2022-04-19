@@ -1,19 +1,17 @@
 package com.groupwork.hairsaloon;
-//com.groupwork.hairsaloon.MenuController
-import Trickster.User;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+public class CreateBooking_Controller {
 
-import java.io.IOException;
-import java.util.Objects;
+    @FXML
+    private ChoiceBox<?> chooseStylist;
 
-public class MenuController {
+    @FXML
+    private ChoiceBox<?> chooseStylist1;
 
     @FXML
     private Button createBooking;
@@ -31,17 +29,13 @@ public class MenuController {
     private Button logoutButton;
 
     @FXML
+    private Label showTreatmentPrice;
+
+    @FXML
+    private Label showTreatmentTime;
+
+    @FXML
     void createBookingScene(ActionEvent event) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateBooking.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
 
     }
 
@@ -112,17 +106,6 @@ public class MenuController {
 
     @FXML
     void terminateSession(ActionEvent event) {
-        try {
-            HairsaloonController hc = new HairsaloonController();
-            hc.user = null;
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
+    }
 }
