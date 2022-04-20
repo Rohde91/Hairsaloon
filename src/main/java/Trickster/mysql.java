@@ -431,7 +431,7 @@ public class mysql {
     }
     //TODO Overvej at lave joined tables i understående, for at slippe for getFk_EmployeeID ?
     //TODO JA! Gør dette før det andet. Eksporter fra SQL til Access og byg join dér.
-    public static ArrayList TESTgetBookingsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
+    public static ArrayList getBookingsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
         //Booking array initialisér her
         ArrayList<Booking> bookings = new ArrayList();
         int test = 0;
@@ -462,27 +462,6 @@ public class mysql {
         }
         //Returnér booking array
         return bookings;
-    }
-
-    //TODO Overvej at lave joined tables i understående, for at slippe for getFk_EmployeeID ?
-    //TODO JA! Gør dette før det andet. Eksporter fra SQL til Access og byg join dér.
-    public static void getBookingsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
-        //Booking array initialisér her
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Booking WHERE fk_EmployeeID='" + fk_employeeID + "' AND Date >= '" + startDate + "' AND Date <= '" + endDate + "'"); // ORDER BY Name
-            while (resultsetIDs.next()) {
-                //Opret booking her og tilføj til array
-                //TODO byg int BookingID array her?
-                //TODO NEJ BYG HELE BOOKING OBJEKTER OG RETURNER DEM! Booking[]...
-                System.out.println(resultsetIDs.getInt(1));
-                System.out.println(resultsetIDs.getTime(3));
-                System.out.println(resultsetIDs.getDate(4));
-            }
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        //Returnér booking array
     }
 
     public static Integer getFk_EmployeeID(String employeeName) {

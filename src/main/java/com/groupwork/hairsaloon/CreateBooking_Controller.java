@@ -198,43 +198,38 @@ public class CreateBooking_Controller implements Initializable {
     //TODO HUSK at sætte diverse ting, som bliver sat herunder i Initialize, så der er noget data, der er "preloaded".
     @FXML
     void weekSelected(MouseEvent event) {
+        //TODO CLEAN CODE LIGE DET HER SPAGHETTI !!!
         System.out.println("Spinner change");
         System.out.println(WeekSpinner.getValue());
         CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).forEach(System.out::println);
         //evt sæt labels i kalenderen MON, Tue etc. til også at vise dato?:
         startdatoLabel.setText(CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0).toString());
         slutdatoLabel.setText(CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4).toString());
-        //buildCalendar();
-        //mysql.getBookingsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0), CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
 
+        //Opretter array af bookinger som er fra valgt frisør og indenfor start -og slutdato.
         ArrayList<Booking> bookings = new ArrayList();
-        bookings = mysql.TESTgetBookingsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0), CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
-
-        for(Booking booking: bookings) {
-            System.out.println(booking.toString());
-            setLabel(CalenderFunctions.getTimeIndex(booking.getTime().toString()),CalenderFunctions.getDayOfWeekIndex(booking.getDate()),"OPTAGET");
-        }
-
-        /*System.out.println(al.toString());
-        System.out.println(al.size());*/
+        bookings = mysql.getBookingsByWeekAndEmployee(
+                mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),
+                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
+                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
 
         //TODO Oversæt fra dato og tid til indexnumre
         //Dato->MON->1
         //Tid->8:00->1
-        //Returnerer dato som int, 6 = fredag (kolonne 0 bruges til tider, ikke dage, så det er fint)
+        //Returnerer dato som int ugedag.
         System.out.println(CalenderFunctions.getDayOfWeekIndex(bookings.get(0).getDate()));
+        //Returnerer tid som int index". Bruger toString da HashMap kun kan bruge String og Int, så ingen Date eller Time...
         System.out.println(CalenderFunctions.getTimeIndex(bookings.get(0).getTime().toString()));
-        //setLabel(CalenderFunctions.getDayOfWeekIndex(bookings.get(0).getDate()),CalenderFunctions.getTimeIndex(bookings.get(0).getTime().toString()), "test");
-        //setLabel(CalenderFunctions.getTimeIndex(bookings.get(0).getTime().toString()),CalenderFunctions.getDayOfWeekIndex(bookings.get(0).getDate()),"DET VIRKER");
 
-        //Virker:
-        //setLabel(CalenderFunctions.getTimeIndex(bookings.get(0).getTime().toString()),CalenderFunctions.getDayOfWeekIndex(bookings.get(0).getDate()),"OPTAGET");
+        //Marker alle optagede timeslots med teksten 'OPTAGET':
+        for(Booking booking: bookings) {
+            setLabel(
+                    CalenderFunctions.getTimeIndex(booking.getTime().toString()),
+                    CalenderFunctions.getDayOfWeekIndex(booking.getDate()),
+                    "OPTAGET");
+        }
     }
 
-
-    // Sæt aftale tirsdag kl 8:30 til "Hanne"
-    // MON = 1, TUE = 2, WED = 3.
-    // 8:00 = 1, 8:30 = 2, 9:00 = 3
     public void setLabel(int TimeIndex, int DayIndex, String labelText) {
         // Sæt coloumn til TUE
         //Label l = (Label) getNodeByRowColumnIndex(DayIndex, TimeIndex, gridPane);
@@ -244,27 +239,20 @@ public class CreateBooking_Controller implements Initializable {
         l.setText(labelText);
     }
 
-
-
     public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
         Node result = null;
         ObservableList<Node> children = gridPane.getChildren();
-        int i = 0;
         for (Node node : children) {
-
-            //if (gridPane.getChildren().get(i).getClass().getSimpleName().equalsIgnoreCase("label")) {
                 if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
                     result = node;
                     break;
                 }
-            //}
-            i++;
         }
-
         return result;
     }
 
     //TODO Byg ny clearLabels, som rydder alle aftale-labels, men beholder MON, TUE, 8:00, 8:30, etc... skal bruges til at resette
+    //TODO Overvej at lave alle labels via kode, så kan vi bare cleare med understående?
     public void clearLabels() {
         ObservableList<Node> children = gridPane.getChildren();
         for (Node node : children) {
