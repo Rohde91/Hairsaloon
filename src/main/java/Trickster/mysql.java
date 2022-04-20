@@ -10,6 +10,8 @@ package Trickster;
 //import Trickster.mysql.cj.util.DnsSrv;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 //TODO sørg for at alle sql kald bruger PreparedStatement.
 
@@ -289,7 +291,7 @@ public class mysql {
 
     public static void flushSQLTable(String tablename) {
         try {
-            PreparedStatement posted = connection.prepareStatement("TRUNCATE TABLE" + tablename);
+            PreparedStatement posted = connection.prepareStatement("TRUNCATE " + tablename);
             posted.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -349,5 +351,75 @@ public class mysql {
             e.printStackTrace();
         }
     }
+    public ArrayList loadEmployeeList() {
+        ArrayList<String> al = new ArrayList<String>();
+        String name = "";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Employee"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                name = resultsetIDs.getString(2);
+                al.add(name);
+            }
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+            return al;
+    }
 
+    public ArrayList loadTreatmentList() {
+        ArrayList<String> al = new ArrayList<String>();
+
+        String name = "";
+/*        String price = "";
+        String duration = "";*/
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Treatments"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                //System.out.print("ID:" + resultsetIDs.getString(2) + " "
+/*                        + resultsetIDs.getString(2) + " "/
+                 //       + resultsetIDs.getString(3));
+                //System.out.println();*/
+                name = resultsetIDs.getString(2);
+/*                price = resultsetIDs.getString(3);
+                duration = resultsetIDs.getString(4);*/
+
+                al.add(name); // + ", " + price + ", " + duration);
+
+            }
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        //System.out.println(al.toString());
+        return al;
+    }
+    public Double getTreatmentPrice(String treatmentName) {
+        Double price = 0.0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Treatments WHERE Name='" + treatmentName + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                price = resultsetIDs.getDouble(3);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return price;
+    }
+    public Time getTreatmentDuration(String treatmentName) {
+        Time duration = null;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Treatments WHERE Name='" + treatmentName + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                duration = resultsetIDs.getTime(4);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return duration;
+    }
 }
