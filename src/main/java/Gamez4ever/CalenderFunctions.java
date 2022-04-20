@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 //TODO få input fra databasen.
 
 
-class CalendarFunctions {
+public class CalendarFunctions {
     //runable while boolean
     private static boolean runable = true;
     public static String day, year, month, pyear;

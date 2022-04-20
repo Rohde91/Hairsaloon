@@ -422,4 +422,18 @@ public class mysql {
         }
         return duration;
     }
+/*    public void getBookingsByWeekAndEmployee(String employeeName, Integer weekNumber) {
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Booking WHERE Name='" + treatmentName + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                 = resultsetIDs.getTime(4);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }*/
+
 }
