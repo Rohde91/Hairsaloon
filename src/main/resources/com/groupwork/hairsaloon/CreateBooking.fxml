@@ -117,15 +117,16 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="8:00" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                  <Label text="8:30" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                  <Label text="9:00" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                  <Label text="9:30" GridPane.columnIndex="0" GridPane.rowIndex="4" />
                   <Label text="MON" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                   <Label text="TUE" GridPane.columnIndex="2" GridPane.rowIndex="0" />
                   <Label text="WED" GridPane.columnIndex="3" GridPane.rowIndex="0" />
                   <Label text="THU" GridPane.columnIndex="4" GridPane.rowIndex="0" />
                   <Label text="FRI" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+
+                  <Label text="8:00" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <Label text="8:30" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <Label text="9:00" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <Label text="9:30" GridPane.columnIndex="0" GridPane.rowIndex="4" />
                   <Label text="10:00" GridPane.columnIndex="0" GridPane.rowIndex="5" />
                   <Label text="10:30" GridPane.columnIndex="0" GridPane.rowIndex="6" />
                   <Label text="11:00" GridPane.columnIndex="0" GridPane.rowIndex="7" />
@@ -139,8 +140,9 @@
                   <Label text="15:00" GridPane.columnIndex="0" GridPane.rowIndex="15" />
                   <Label text="15:30" GridPane.columnIndex="0" GridPane.rowIndex="16" />
                   <Label text="16:00" GridPane.columnIndex="0" GridPane.rowIndex="17" />
+
+                  <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
@@ -156,8 +158,9 @@
                   <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="15" />
                   <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="16" />
                   <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+
+                  <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Label text="label" />
                   <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                   <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="5" />
@@ -173,6 +176,7 @@
                   <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="15" />
                   <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="16" />
                   <Label text="label" GridPane.columnIndex="2" GridPane.rowIndex="17" />
+
                   <Label text="label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <Label text="label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                   <Label text="label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
@@ -190,6 +194,7 @@
                   <Label text="label" GridPane.columnIndex="3" GridPane.rowIndex="15" />
                   <Label text="label" GridPane.columnIndex="3" GridPane.rowIndex="16" />
                   <Label text="label" GridPane.columnIndex="3" GridPane.rowIndex="17" />
+
                   <Label text="label" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                   <Label text="label" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                   <Label text="label" GridPane.columnIndex="4" GridPane.rowIndex="3" />
@@ -207,6 +212,7 @@
                   <Label text="label" GridPane.columnIndex="4" GridPane.rowIndex="15" />
                   <Label text="label" GridPane.columnIndex="4" GridPane.rowIndex="16" />
                   <Label text="label" GridPane.columnIndex="4" GridPane.rowIndex="17" />
+
                   <Label text="label" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                   <Label text="label" GridPane.columnIndex="5" GridPane.rowIndex="2" />
                   <Label text="label" GridPane.columnIndex="5" GridPane.rowIndex="3" />
@@ -224,11 +230,15 @@
                   <Label text="label" GridPane.columnIndex="5" GridPane.rowIndex="15" />
                   <Label text="label" GridPane.columnIndex="5" GridPane.rowIndex="16" />
                   <Label text="label" GridPane.columnIndex="5" GridPane.rowIndex="17" />
-                  <Label text="label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
                </children>
             </GridPane>
-            <Spinner fx:id="WeekSpinner" layoutX="652.0" layoutY="147.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#weekSelected" />
-            <Label layoutX="549.0" layoutY="151.0" text="Vælg uge" />
+            <Spinner fx:id="WeekSpinner" layoutX="649.0" layoutY="99.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#weekSelected" />
+            <Label layoutX="546.0" layoutY="103.0" text="Vælg uge" />
+            <Label layoutX="546.0" layoutY="150.0" text="Fra:" />
+            <Label layoutX="682.0" layoutY="150.0" text="Til:" />
+            <Label fx:id="startdatoLabel" layoutX="578.0" layoutY="150.0" prefHeight="17.0" prefWidth="96.0" text="startdato" />
+            <Label fx:id="slutdatoLabel" layoutX="712.0" layoutY="150.0" prefHeight="17.0" prefWidth="96.0" text="slutdato" />
          </children>
       </AnchorPane>
    </center>

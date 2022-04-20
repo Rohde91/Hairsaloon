@@ -1,16 +1,19 @@
 package Gamez4ever;
 
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
 import java.util.*;
-import java.time.LocalDateTime;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 //TODO få den til at give datoerne på en bestemt uge og ikke den første i hver måned, med 4+ dage.
 //TODO få input fra databasen.
 
 
-public class CalendarFunctions {
+public class CalenderFunctions {
     //runable while boolean
     private static boolean runable = true;
     public static String day, year, month, pyear;
@@ -145,6 +148,42 @@ public class CalendarFunctions {
             calndr1.set(Calendar.DAY_OF_WEEK, i);
             System.out.println(calndr1.getTime());//Returns Date
         }
+    }
+
+    // DGH
+    public static LocalDate getFirstDayOfWeek(int weekNumber, Locale locale) {
+        return LocalDate
+                .of(Year.now().getValue(), 2, 1)
+                .with(WeekFields.of(locale).getFirstDayOfWeek())
+                .with(WeekFields.of(locale).weekOfWeekBasedYear(), weekNumber);
+    }
+
+    public static List<LocalDate> getAllDaysOfTheWeek(int weekNumber, Locale locale) {
+        LocalDate firstDayOfWeek = getFirstDayOfWeek(weekNumber, locale);
+        return IntStream
+                .rangeClosed(1, 5)
+                .mapToObj(i -> firstDayOfWeek.plusDays(i))
+                .collect(Collectors.toList());
+    }
+
+    public static int getDayOfWeekIndex(Date date){
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+        return dayOfWeek-1;
+    }
+
+    public static int getTimeIndex(String time){
+        HashMap<String, Integer> index = new HashMap<>();
+        Time t = new Time(8);
+        int minPerHalfHour = 30;
+        for (int numberOfHalfHours = 0; numberOfHalfHours <= 16; numberOfHalfHours++) {
+            int x;
+            x = minPerHalfHour * numberOfHalfHours;
+            t.setTime(1000*60*60*7 + 1000*60 * x);
+            index.put(t.toString(),numberOfHalfHours+1);
+        }
+        return index.get(time);
     }
 }
 

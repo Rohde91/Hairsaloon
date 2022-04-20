@@ -10,8 +10,15 @@ package Trickster;
 //import Trickster.mysql.cj.util.DnsSrv;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Year;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 //TODO sørg for at alle sql kald bruger PreparedStatement.
 
@@ -422,18 +429,74 @@ public class mysql {
         }
         return duration;
     }
-/*    public void getBookingsByWeekAndEmployee(String employeeName, Integer weekNumber) {
-
+    //TODO Overvej at lave joined tables i understående, for at slippe for getFk_EmployeeID ?
+    //TODO JA! Gør dette før det andet. Eksporter fra SQL til Access og byg join dér.
+    public static ArrayList TESTgetBookingsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
+        //Booking array initialisér her
+        ArrayList<Booking> bookings = new ArrayList();
+        int test = 0;
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Booking WHERE Name='" + treatmentName + "'"); // ORDER BY Name
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Booking WHERE fk_EmployeeID='" + fk_employeeID + "' AND Date >= '" + startDate + "' AND Date <= '" + endDate + "'"); // ORDER BY Name
             while (resultsetIDs.next()) {
-                 = resultsetIDs.getTime(4);
+                //Opret booking her og tilføj til array
+                System.out.println(test);
+                Booking b = new Booking();
+                b.setBookingID(resultsetIDs.getInt(1));
+                b.setFk_CostumerID(resultsetIDs.getInt(2));
+                b.setTime(resultsetIDs.getTime(3));
+                b.setDate(resultsetIDs.getDate(4));
+                b.setFk_TreatmentID(resultsetIDs.getInt(5));
+                b.setFk_EmployeeID(resultsetIDs.getInt(6));
+                bookings.add(b);
+                test++;
+
+                //TODO byg int BookingID array her?
+                //TODO NEJ BYG HELE BOOKING OBJEKTER OG RETURNER DEM! Booking[]...
+                System.out.println(resultsetIDs.getInt(1));
+                System.out.println(resultsetIDs.getTime(3));
+                System.out.println(resultsetIDs.getDate(4));
             }
         } catch(Exception e){
             e.printStackTrace();
         }
+        //Returnér booking array
+        return bookings;
+    }
 
-    }*/
+    //TODO Overvej at lave joined tables i understående, for at slippe for getFk_EmployeeID ?
+    //TODO JA! Gør dette før det andet. Eksporter fra SQL til Access og byg join dér.
+    public static void getBookingsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
+        //Booking array initialisér her
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Booking WHERE fk_EmployeeID='" + fk_employeeID + "' AND Date >= '" + startDate + "' AND Date <= '" + endDate + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                //Opret booking her og tilføj til array
+                //TODO byg int BookingID array her?
+                //TODO NEJ BYG HELE BOOKING OBJEKTER OG RETURNER DEM! Booking[]...
+                System.out.println(resultsetIDs.getInt(1));
+                System.out.println(resultsetIDs.getTime(3));
+                System.out.println(resultsetIDs.getDate(4));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        //Returnér booking array
+    }
+
+    public static Integer getFk_EmployeeID(String employeeName) {
+        Integer id = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Employee WHERE Name='" + employeeName + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                 id = resultsetIDs.getInt(1);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return id;
+    }
 
 }
