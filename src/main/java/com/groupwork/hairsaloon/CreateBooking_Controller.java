@@ -188,10 +188,10 @@ public class CreateBooking_Controller implements Initializable {
         this.WeekSpinner.setValueFactory(weekNumberValueFactory);
         WeekSpinner.setEditable(true);
         //TODO Load kalender med den uge, som er valgt som standard, og load derefter igen når WeekSpinner ændres - se weekSelected():
-
+        //weekspinner ER lavet, mangler on load.
 
         //TEST
-        setLabel(2,2,"test");
+        //setLabel(2,2,"test");
 
     }
 
@@ -231,14 +231,12 @@ public class CreateBooking_Controller implements Initializable {
     }
 
     public void setLabel(int TimeIndex, int DayIndex, String labelText) {
-        // Sæt coloumn til TUE
-        //Label l = (Label) getNodeByRowColumnIndex(DayIndex, TimeIndex, gridPane);
         Node n = getNodeByRowColumnIndex(TimeIndex, DayIndex, gridPane);
-        // Sæt row til 2
         Label l = (Label) n;
         l.setText(labelText);
     }
 
+    //TODO Evt fjern gridPane, den er allerede sat som global var.
     public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
         Node result = null;
         ObservableList<Node> children = gridPane.getChildren();
