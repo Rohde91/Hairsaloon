@@ -111,9 +111,27 @@ public class mysql {
         return employee;
     }
 
+
+
+    public User buildUser(ResultSet resultSet,String email) throws SQLException {
+        if (resultSet != null ) {
+            if (userType(email).equals("Customer")) {
+                System.out.println("Customer login complete");
+                return BuildCustomerObject(resultSet);
+
+            } else if (userType(email).equals("Employee")) {
+                System.out.println("Employee login complete");
+                return BuildEmployeeObject(resultSet);
+            }
+        }
+        else {
+            System.out.println("You have no login. Create a new profile");
+        }
+        return null;
+    }
     //---------------------------------------------------------------------------------------------------------------
 
-    public User TryUserLogin(String email, String password) {
+    public User TryUserLogin (String email, String password) {
         ResultSet buildUserResultset = null;
         String sql;
         String usertype = userType(email);
@@ -125,6 +143,7 @@ public class mysql {
                     " WHERE Email='" + email +
                     "' AND Password='" + password +
                     "'";
+
             ResultSet checkLoginRS = statement.executeQuery(sql);
 
             if (checkLoginRS.next()){
@@ -132,6 +151,7 @@ public class mysql {
                         " WHERE Email='" + email +
                         "'";
                 buildUserResultset = statement.executeQuery(sql);
+                return buildUser(buildUserResultset,email);
             }
             else{
                 System.out.println("wrong password or email");
@@ -140,70 +160,12 @@ public class mysql {
 
             // Hvis bruger kan logge ind, skabes customer eller employee objekt og returneres.
             //TODO security flaw, if someone injects a buildUserResultset they will be given access
-            if (buildUserResultset != null ) {
-                if (userType(email).equals("Customer")) {
-                    System.out.println("Customer login complete");
-                    return BuildCustomerObject(buildUserResultset);
 
-                } else if (userType(email).equals("Employee")) {
-                    System.out.println("Employee login complete");
-                    return BuildEmployeeObject(buildUserResultset);
-                }
-            }
-            else {
-                System.out.println("You have no login. Create a new profile");
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
-
-
-
-        /* 2nd try
-        try {
-            Statement statement = connection.createStatement();
-            sql = "SELECT * FROM " + type(email) +" WHERE ID='"
-                    + ID+"'";
-            ResultSet getUser = statement.executeQuery(sql);
-
-            if (getUser != null) {
-
-                System.out.println(type.getEmail() + " loggede på :-)");
-                //TODO Overvej at flytte til separat funktion CreateCustomerInSQL(String name, etc.)
-                while (getUser.next()) {
-                    loggedInUser.setName(getUser.getString(2));
-                    loggedInUser.setEmail(getUser.getString(3));
-                    loggedInUser.setPhone(getUser.getString(4));
-                    loggedInUser.setAddress(getUser.getString(5));
-                    loggedInUser.setPassword(getUser.getString(6));
-                    //loggedInCustomer.setGender(getCustomer.getString(7));
-                }
-            }
-            return (E) loggedInUser;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-   }
-        */
-
-
-
-
-   /* public User createCustomer(String name, String email, String phone, String address, String password) {
-        Customer customer = null;
-        //look at a table of emails and passwords.
-        if (userType(email).equals("Customer")) {
-            customer = new Customer(name,email,phone,address,password);
-        }
-        return customer;
-    }*/
-
-
 
     //---------------------------------------------------------------------------------------------------------------
 
