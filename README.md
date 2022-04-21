@@ -1,5 +1,5 @@
 # Hairsaloon
-5 man, 3 springt, 1 project
+5 man, 3 sprint, 1 project
 
 Spring 1-3 information/documentation:
 
