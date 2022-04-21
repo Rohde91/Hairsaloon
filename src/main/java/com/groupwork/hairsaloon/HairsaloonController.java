@@ -29,10 +29,36 @@ public class HairsaloonController {
         user=msql.TryUserLogin(email, password);
 
         //scene swicht to Menu
-        if (msql.userType(email).equals("Employee") || msql.userType(email).equals("Customer")) {
+
+        //TODO duplicated code from mysql trylogin
+        if (msql.userType(email).equals("Customer")) {
 
             try {
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Menu.fxml")));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        else if (msql.userType(email).equals("Employee")) {
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EMPMenu.fxml")));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        else if (msql.userType(email).equals("Admin")) {
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ADMMenu.fxml")));
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);

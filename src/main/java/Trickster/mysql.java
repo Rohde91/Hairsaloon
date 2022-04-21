@@ -11,14 +11,7 @@ package Trickster;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Year;
-import java.time.temporal.WeekFields;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 //TODO sørg for at alle sql kald bruger PreparedStatement.
 
@@ -106,7 +99,7 @@ public class mysql {
         return customer;
     }
 
-    public Trickster.Employee BuildEmployee(ResultSet rs) throws SQLException {
+    public Trickster.Employee BuildEmployeeObject(ResultSet rs) throws SQLException {
         Trickster.Employee employee = new Trickster.Employee();
         while (rs.next()) {
             employee.setName(rs.getString("Name"));
@@ -168,7 +161,7 @@ public class mysql {
 
                 } else if (userType(email).equals("Employee")) {
                     System.out.println("Employee login complete");
-                    return BuildEmployee(buildUserResultset);
+                    return BuildEmployeeObject(buildUserResultset);
                 }
             }
             else {

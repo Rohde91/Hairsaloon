@@ -22,6 +22,7 @@ public class Booking {
         this.fk_EmployeeID = fk_EmployeeID;
     }
 
+
     public int getBookingID() {
         return bookingID;
     }
