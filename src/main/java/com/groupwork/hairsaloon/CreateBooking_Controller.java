@@ -10,12 +10,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +32,9 @@ import java.util.*;
 public class CreateBooking_Controller implements Initializable {
     mysql msql = mysql.getInstance();
     String treatmentName = "";
+
+    Boolean slotSelected = false;
+    Label lastLabel;
 
     @FXML
     private ChoiceBox<?> chooseStylist;
@@ -225,6 +233,10 @@ public class CreateBooking_Controller implements Initializable {
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
 
+        msql.getBookingDetailsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),
+                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
+                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
+
         //TODO Oversæt fra dato og tid til indexnumre
         //Dato->MON->1
         //Tid->8:00->1
@@ -269,9 +281,37 @@ public class CreateBooking_Controller implements Initializable {
             //clear alle labels, der ikke er overskrifter
             if (GridPane.getRowIndex(node)>0 && GridPane.getColumnIndex(node)>0) {
                 Label l = (Label) node;
-                l.setText("-");
+                l.setText("     -     ");
             }
 
+        }
+    }
+
+    @FXML
+    private Label selectedTimeSlotLabel;
+
+    @FXML
+    void createBookingSlot(MouseEvent event) {
+        System.out.println("test: you clicked on a time slot");
+        //System.out.println(event.getSource());
+        Label l = (Label) event.getSource();
+        System.out.println("Række: " + GridPane.getRowIndex(l));
+        System.out.println("Kolonne: " + GridPane.getColumnIndex(l));
+
+        if (!l.getText().equalsIgnoreCase("optaget")) {
+            //Først test om der allerede er sat en time slot. Hvis der er, clear lastLabel:
+            if (l.getBackground() == null && lastLabel != null) {
+                lastLabel.setBackground(new Background(new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+            l.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+            selectedTimeSlotLabel.setText(
+                    CalenderFunctions.getTime(GridPane.getRowIndex(l))
+                    + " - "
+                    + CalenderFunctions.getDayOfWeek(GridPane.getColumnIndex(l))
+            );
+            lastLabel = l;
+        } else {
+            System.out.println("Du kan ikke vælge et tidspunkt, der allerede er optaget. Prøv igen.");
         }
     }
 }
