@@ -17,20 +17,20 @@ import java.util.Objects;
 public class HairsaloonController {
     public TextField usernameInputfield;
     public PasswordField passwordInputfield;
+    //TODO rename to loggedInUser:
     public User user;
-
-
-
 
     @FXML
     public void loginUserActionButton(ActionEvent actionEvent) {
         String email = usernameInputfield.getText();
         String password = passwordInputfield.getText();
         Trickster.mysql msql = Trickster.mysql.getInstance();
+        //TODO Opret fejlhåndtering her:
         user=msql.TryUserLogin(email, password);
 
         //scene swicht to Menu
         if (msql.userType(email).equals("Employee") || msql.userType(email).equals("Customer")) {
+
             try {
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Menu.fxml")));
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -43,5 +43,3 @@ public class HairsaloonController {
         }
     }
 }
-
-//button not there.

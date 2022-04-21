@@ -10,8 +10,15 @@ package Trickster;
 //import Trickster.mysql.cj.util.DnsSrv;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Year;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 //TODO sørg for at alle sql kald bruger PreparedStatement.
 
@@ -333,12 +340,12 @@ public class mysql {
             e.printStackTrace();
         }
     }
-    //---------------------------------------------------------------------------------------------------------------
 
+    //---------------------------------------------------------------------------------------------------------------
 
     public void createBookingInSQL (Booking booking) {
         try {
-            PreparedStatement addToCustomerTable = connection.
+            PreparedStatement addToBookingTable = connection.
                     prepareStatement("INSERT INTO Booking(fk_CustomerID, Time, Date, fk_treatmentID, fk_EmployeeID) VALUES " +
                             "('" + booking.getFk_CostumerID()
                             + "', '" + booking.getTime()
@@ -346,11 +353,14 @@ public class mysql {
                             + "', '" + booking.getFk_TreatmentID()
                             + "', '" + booking.getFk_EmployeeID()
                             + "')");
-            addToCustomerTable.executeUpdate();
+            addToBookingTable.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    //---------------------------------------------------------------------------------------------------------------
+
     public ArrayList loadEmployeeList() {
         ArrayList<String> al = new ArrayList<String>();
         String name = "";
@@ -366,6 +376,8 @@ public class mysql {
             }
             return al;
     }
+
+    //---------------------------------------------------------------------------------------------------------------
 
     public ArrayList loadTreatmentList() {
         ArrayList<String> al = new ArrayList<String>();
@@ -396,6 +408,9 @@ public class mysql {
         //System.out.println(al.toString());
         return al;
     }
+
+    //---------------------------------------------------------------------------------------------------------------
+
     public Double getTreatmentPrice(String treatmentName) {
         Double price = 0.0;
         try {
@@ -409,6 +424,9 @@ public class mysql {
         }
         return price;
     }
+
+    //---------------------------------------------------------------------------------------------------------------
+
     public Time getTreatmentDuration(String treatmentName) {
         Time duration = null;
         try {
@@ -422,4 +440,53 @@ public class mysql {
         }
         return duration;
     }
+    //TODO Overvej at lave joined tables i understående, for at slippe for getFk_EmployeeID ?
+    //TODO JA! Gør dette før det andet. Eksporter fra SQL til Access og byg join dér.
+
+    //---------------------------------------------------------------------------------------------------------------
+
+    public static ArrayList getBookingsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
+        //Booking array initialisér her
+        ArrayList<Booking> bookings = new ArrayList();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Booking WHERE fk_EmployeeID='" + fk_employeeID + "' AND Date >= '" + startDate + "' AND Date <= '" + endDate + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                //Opret booking her og tilføj til array
+                Booking b = new Booking();
+                b.setBookingID(resultsetIDs.getInt(1));
+                b.setFk_CostumerID(resultsetIDs.getInt(2));
+                b.setTime(resultsetIDs.getTime(3));
+                b.setDate(resultsetIDs.getDate(4));
+                b.setFk_TreatmentID(resultsetIDs.getInt(5));
+                b.setFk_EmployeeID(resultsetIDs.getInt(6));
+                bookings.add(b);
+
+                //TODO byg int BookingID array her?
+                //TODO NEJ BYG HELE BOOKING OBJEKTER OG RETURNER DEM! Booking[]...
+                System.out.println(resultsetIDs.getInt(1));
+                System.out.println(resultsetIDs.getTime(3));
+                System.out.println(resultsetIDs.getDate(4));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        //Returnér booking array
+        return bookings;
+    }
+
+    public static Integer getFk_EmployeeID(String employeeName) {
+        Integer id = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Employee WHERE Name='" + employeeName + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                 id = resultsetIDs.getInt(1);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return id;
+    }
+
 }

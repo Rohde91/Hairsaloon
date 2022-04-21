@@ -8,13 +8,13 @@ public class Booking {
 
     private int bookingID, fk_CostumerID;
     private Time time;
-    private LocalDate date;
+    private Date date;
     private int fk_TreatmentID,	fk_EmployeeID;
 
     public Booking() {
     }
 
-    public Booking(int fk_CostumerID, Time time, LocalDate date, int fk_TreatmentID, int fk_EmployeeID) {
+    public Booking(int fk_CostumerID, Time time, Date date, int fk_TreatmentID, int fk_EmployeeID) {
         this.fk_CostumerID = fk_CostumerID;
         this.time = time;
         this.date = date;
@@ -46,11 +46,11 @@ public class Booking {
         this.time = time;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -68,5 +68,17 @@ public class Booking {
 
     public void setFk_EmployeeID(int fk_EmployeeID) {
         this.fk_EmployeeID = fk_EmployeeID;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingID=" + bookingID +
+                ", fk_CostumerID=" + fk_CostumerID +
+                ", time=" + time +
+                ", date=" + date +
+                ", fk_TreatmentID=" + fk_TreatmentID +
+                ", fk_EmployeeID=" + fk_EmployeeID +
+                '}';
     }
 }
