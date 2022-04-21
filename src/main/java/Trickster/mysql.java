@@ -340,12 +340,12 @@ public class mysql {
             e.printStackTrace();
         }
     }
-    //---------------------------------------------------------------------------------------------------------------
 
+    //---------------------------------------------------------------------------------------------------------------
 
     public void createBookingInSQL (Booking booking) {
         try {
-            PreparedStatement addToCustomerTable = connection.
+            PreparedStatement addToBookingTable = connection.
                     prepareStatement("INSERT INTO Booking(fk_CustomerID, Time, Date, fk_treatmentID, fk_EmployeeID) VALUES " +
                             "('" + booking.getFk_CostumerID()
                             + "', '" + booking.getTime()
@@ -353,11 +353,14 @@ public class mysql {
                             + "', '" + booking.getFk_TreatmentID()
                             + "', '" + booking.getFk_EmployeeID()
                             + "')");
-            addToCustomerTable.executeUpdate();
+            addToBookingTable.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    //---------------------------------------------------------------------------------------------------------------
+
     public ArrayList loadEmployeeList() {
         ArrayList<String> al = new ArrayList<String>();
         String name = "";
@@ -373,6 +376,8 @@ public class mysql {
             }
             return al;
     }
+
+    //---------------------------------------------------------------------------------------------------------------
 
     public ArrayList loadTreatmentList() {
         ArrayList<String> al = new ArrayList<String>();
@@ -403,6 +408,9 @@ public class mysql {
         //System.out.println(al.toString());
         return al;
     }
+
+    //---------------------------------------------------------------------------------------------------------------
+
     public Double getTreatmentPrice(String treatmentName) {
         Double price = 0.0;
         try {
@@ -416,6 +424,9 @@ public class mysql {
         }
         return price;
     }
+
+    //---------------------------------------------------------------------------------------------------------------
+
     public Time getTreatmentDuration(String treatmentName) {
         Time duration = null;
         try {
@@ -431,16 +442,17 @@ public class mysql {
     }
     //TODO Overvej at lave joined tables i understående, for at slippe for getFk_EmployeeID ?
     //TODO JA! Gør dette før det andet. Eksporter fra SQL til Access og byg join dér.
+
+    //---------------------------------------------------------------------------------------------------------------
+
     public static ArrayList getBookingsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
         //Booking array initialisér her
         ArrayList<Booking> bookings = new ArrayList();
-        int test = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Booking WHERE fk_EmployeeID='" + fk_employeeID + "' AND Date >= '" + startDate + "' AND Date <= '" + endDate + "'"); // ORDER BY Name
             while (resultsetIDs.next()) {
                 //Opret booking her og tilføj til array
-                System.out.println(test);
                 Booking b = new Booking();
                 b.setBookingID(resultsetIDs.getInt(1));
                 b.setFk_CostumerID(resultsetIDs.getInt(2));
@@ -449,7 +461,6 @@ public class mysql {
                 b.setFk_TreatmentID(resultsetIDs.getInt(5));
                 b.setFk_EmployeeID(resultsetIDs.getInt(6));
                 bookings.add(b);
-                test++;
 
                 //TODO byg int BookingID array her?
                 //TODO NEJ BYG HELE BOOKING OBJEKTER OG RETURNER DEM! Booking[]...

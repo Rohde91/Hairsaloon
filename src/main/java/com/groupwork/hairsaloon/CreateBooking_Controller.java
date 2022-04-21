@@ -158,6 +158,7 @@ public class CreateBooking_Controller implements Initializable {
         //CalenderFunctions.chooseDate();
         CalenderFunctions.getAllDaysOfTheWeek(20, Locale.ENGLISH).forEach(System.out::println);
         // Giv chooseStylist og chooseStylist1 bedre navne.
+        clearLabels();
 
         // Set dropdowns
         ChoiceBox choiceBoxEmployees = chooseStylist;
@@ -199,6 +200,7 @@ public class CreateBooking_Controller implements Initializable {
     @FXML
     void weekSelected(MouseEvent event) {
         //TODO CLEAN CODE LIGE DET HER SPAGHETTI !!!
+
         System.out.println("Spinner change");
         System.out.println(WeekSpinner.getValue());
         CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).forEach(System.out::println);
@@ -220,6 +222,8 @@ public class CreateBooking_Controller implements Initializable {
         System.out.println(CalenderFunctions.getDayOfWeekIndex(bookings.get(0).getDate()));
         //Returnerer tid som int index". Bruger toString da HashMap kun kan bruge String og Int, så ingen Date eller Time...
         System.out.println(CalenderFunctions.getTimeIndex(bookings.get(0).getTime().toString()));
+
+        clearLabels();
 
         //Marker alle optagede timeslots med teksten 'OPTAGET':
         for(Booking booking: bookings) {
@@ -249,13 +253,15 @@ public class CreateBooking_Controller implements Initializable {
         return result;
     }
 
-    //TODO Byg ny clearLabels, som rydder alle aftale-labels, men beholder MON, TUE, 8:00, 8:30, etc... skal bruges til at resette
-    //TODO Overvej at lave alle labels via kode, så kan vi bare cleare med understående?
     public void clearLabels() {
         ObservableList<Node> children = gridPane.getChildren();
         for (Node node : children) {
-            Label l = (Label) node;
-            l.setText("");
+            //clear alle labels, der ikke er overskrifter
+            if (GridPane.getRowIndex(node)>0 && GridPane.getColumnIndex(node)>0) {
+                Label l = (Label) node;
+                l.setText("-");
+            }
+
         }
     }
 }
