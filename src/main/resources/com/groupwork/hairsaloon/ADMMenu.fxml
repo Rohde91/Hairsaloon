@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.MenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.EMPMenuController">
    <left>
       <AnchorPane prefHeight="701.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
@@ -19,7 +19,7 @@
                   <Image url="@../../../../Downloads/pngwing.com.png" />
                </image>
             </ImageView>
-            <Button styleClass="button1" fx:id="createBooking" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
+            <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" onAction="#createBookingScene" styleClass="button1" text="Opret aftale" />
             <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
             <Button fx:id="findCostumer" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
             <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
