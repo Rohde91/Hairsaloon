@@ -1,6 +1,7 @@
 package com.groupwork.hairsaloon;
 
 import Gamez4ever.CalenderFunctions;
+import Trickster.mysql;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+
+/**
+ * Access joins (Alle) - er lavet.
+ *
+ * Byg interface (Martin Allan)
+ *
+ * MyBookingScene skal udfyldes
+ *
+ * Forskellige login-pages
+ *
+*/
 
 public class Hairsaloon extends Application {
     @Override
@@ -25,6 +38,8 @@ public class Hairsaloon extends Application {
         //scene1.getStylesheets().add(css);
         stage.setScene(scene1);
         stage.show();
+
+
 
     }
 
