@@ -14,14 +14,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.CreateBooking_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.CreateBooking_Controller">
    <left>
       <AnchorPane prefHeight="701.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
             <Line endX="150.0" startX="150.0" startY="700.0" />
             <ImageView id="frontpageLogo" fitHeight="98.0" fitWidth="150.0" layoutX="1.0">
                <image>
-                  <Image url="@../../../../Downloads/pngwing.com.png" />
+                  <Image url="@../../../../../../png-transparent-letter-m-others.png" />
                </image>
             </ImageView>
             <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" minWidth="120.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
