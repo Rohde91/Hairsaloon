@@ -134,16 +134,6 @@ public class mysql {
                     "' AND Password='" + password +
                     "'";
             ResultSet checkLoginRS = statement.executeQuery(sql);
-/*           System.out.println(checkLoginRS.getString("Email"));
-
-            if (!checkLoginRS.isBeforeFirst() ) {
-                System.out.println("No data");
-            }
-
-            while (checkLoginRS.next()) {
-                System.out.println("Email:"+checkLoginRS.getString("Email"));
-
-            }*/
 
             if (checkLoginRS.next()){
                 sql = "SELECT * FROM " + usertype +
@@ -156,10 +146,6 @@ public class mysql {
                 return null;
             }
 
-            /*while (buildUserResultset.next()) {
-                System.out.println("name:"+buildUserResultset.getString("Name"));
-            }*/
-            // Hvis bruger kan logge ind, skabes customer eller employee objekt og returneres.
             //TODO security flaw, if someone injects a buildUserResultset they will be given access
             if (buildUserResultset != null ) {
                 if (userType(email).equals("Customer")) {
@@ -462,8 +448,6 @@ public class mysql {
                 b.setFk_EmployeeID(resultsetIDs.getInt(6));
                 bookings.add(b);
 
-                //TODO byg int BookingID array her?
-                //TODO NEJ BYG HELE BOOKING OBJEKTER OG RETURNER DEM! Booking[]...
                 System.out.println(resultsetIDs.getInt(1));
                 System.out.println(resultsetIDs.getTime(3));
                 System.out.println(resultsetIDs.getDate(4));
@@ -487,6 +471,73 @@ public class mysql {
             e.printStackTrace();
         }
         return id;
+    }
+
+    //TEST
+    public static ArrayList getBookingDetailsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
+        //Booking array initialisér her
+        ArrayList<BookingDetails> bookingDetails = new ArrayList();
+        try {
+            Statement statement = connection.createStatement();
+
+            String sql = "SELECT * FROM ((Booking INNER JOIN Customer ON Booking.fk_CustomerID = Customer.CustomerID) INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID) INNER JOIN Employee ON Booking.fk_EmployeeID = Employee.EmployeeID WHERE (((Booking.Date)>='" + startDate + "') AND ((Booking.fk_employeeID)=" + fk_employeeID + ")) OR (((Booking.Date)<='" + endDate + "') AND ((Booking.fk_employeeID)=" + fk_employeeID + "))";
+
+            ResultSet resultsetIDs = statement.executeQuery(sql);
+
+            while (resultsetIDs.next()) {
+                //Opret booking her og tilføj til array
+/*                BookingDetails b = new BookingDetails();
+                b.setBookingID(resultsetIDs.getInt(1));
+                b.setFk_CostumerID(resultsetIDs.getInt(2));
+                b.setTime(resultsetIDs.getTime(3));
+                b.setDate(resultsetIDs.getDate(4));
+                b.setFk_TreatmentID(resultsetIDs.getInt(5));
+                b.setFk_EmployeeID(resultsetIDs.getInt(6));
+                bookingDetails.add(b);*/
+
+/*                System.out.println(resultsetIDs.getString(1));
+
+                System.out.println(resultsetIDs.getInt(2));
+                System.out.println(resultsetIDs.getTime(3));
+                System.out.println(resultsetIDs.getDate(4));
+                System.out.println(resultsetIDs.getInt(5));
+                System.out.println(resultsetIDs.getInt(6));*/
+
+                System.out.print(resultsetIDs.getString(1) + " - ");
+                System.out.print(resultsetIDs.getString(2) + " - ");
+                System.out.print(resultsetIDs.getString(3) + " - ");
+                System.out.print(resultsetIDs.getString(4) + " - ");
+                System.out.print(resultsetIDs.getString(5) + " - ");
+                System.out.print(resultsetIDs.getString(6) + " - ");
+                System.out.print(resultsetIDs.getString(7) + " - ");
+                System.out.print(resultsetIDs.getString(8) + " - ");
+                System.out.print(resultsetIDs.getString(9) + " - ");
+                System.out.print(resultsetIDs.getString(10) + " - ");
+                System.out.print(resultsetIDs.getString(11) + " - ");
+                System.out.print(resultsetIDs.getString(12) + " - ");
+                System.out.print(resultsetIDs.getString(13) + " - ");
+                System.out.println("");
+
+                /*System.out.println(resultsetIDs.getInt(1));
+                System.out.println(resultsetIDs.getString(2));
+                System.out.println(resultsetIDs.getString(3));
+                System.out.println(resultsetIDs.getTime(4));
+                System.out.println(resultsetIDs.getDate(5));
+                System.out.println(resultsetIDs.getString(6));
+                System.out.println(resultsetIDs.getInt(7));
+                System.out.println(resultsetIDs.getTime(8));
+                System.out.println(resultsetIDs.getString(9));
+                System.out.println(resultsetIDs.getString(10));
+                System.out.println(resultsetIDs.getInt(11));
+                System.out.println(resultsetIDs.getInt(12));
+                System.out.println(resultsetIDs.getInt(13));*/
+
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        //Returnér booking array
+        return bookingDetails;
     }
 
 }

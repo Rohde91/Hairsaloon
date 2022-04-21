@@ -215,6 +215,13 @@ public class CreateBooking_Controller implements Initializable {
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
 
+        //Temp:
+        //mysql msql = mysql.getInstance();
+        msql.getBookingDetailsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
+                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
+
+
+
         //TODO Oversæt fra dato og tid til indexnumre
         //Dato->MON->1
         //Tid->8:00->1
