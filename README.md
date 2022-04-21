@@ -1,9 +1,9 @@
 # Hairsaloon
-5 man, 3 springs, 1 project
+5 man, 3 springt, 1 project
 
 Spring 1-3 information/documentation:
 
-Spring 1:
+Sprint 1:
 Project is started.
 Initial planning has started and coding begun.
   Planning is started whit Asana board.
@@ -27,7 +27,7 @@ Function for creating costumer is started in production.
 Function for edit costumer is started in production.
 
 
-Spring 2:
+Sprint 2:
 Diagrams continued (list).
 Login/logout function in production and testing.
 Function for creating costumer is in production and testing.
@@ -41,3 +41,8 @@ Desig/interface on calender has started.
 New class in visual.
 Reseach on printing specific dates in a specific week.
 Repository has bin made and code started to upload.
+
+
+Sprint 3:
+Calender has bin started and completed.
+  The overlapping booking is still in the work.
