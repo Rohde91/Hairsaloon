@@ -118,7 +118,6 @@ public class mysql {
         String sql;
         String usertype = userType(email);
 
-        //looks at a table of emails and passwords.
         try {
             //Prøv at logge ind:
             Statement statement = connection.createStatement();
@@ -127,16 +126,6 @@ public class mysql {
                     "' AND Password='" + password +
                     "'";
             ResultSet checkLoginRS = statement.executeQuery(sql);
-/*           System.out.println(checkLoginRS.getString("Email"));
-
-            if (!checkLoginRS.isBeforeFirst() ) {
-                System.out.println("No data");
-            }
-
-            while (checkLoginRS.next()) {
-                System.out.println("Email:"+checkLoginRS.getString("Email"));
-
-            }*/
 
             if (checkLoginRS.next()){
                 sql = "SELECT * FROM " + usertype +
@@ -149,9 +138,6 @@ public class mysql {
                 return null;
             }
 
-            /*while (buildUserResultset.next()) {
-                System.out.println("name:"+buildUserResultset.getString("Name"));
-            }*/
             // Hvis bruger kan logge ind, skabes customer eller employee objekt og returneres.
             //TODO security flaw, if someone injects a buildUserResultset they will be given access
             if (buildUserResultset != null ) {

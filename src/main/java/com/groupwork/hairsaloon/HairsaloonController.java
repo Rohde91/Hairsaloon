@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,7 +22,12 @@ public class HairsaloonController {
     public User user;
 
     @FXML
+    private Label WrongTextLabel;
+
+
+    @FXML
     public void loginUserActionButton(ActionEvent actionEvent) {
+
         String email = usernameInputfield.getText();
         String password = passwordInputfield.getText();
         Trickster.mysql msql = Trickster.mysql.getInstance();
@@ -66,6 +72,11 @@ public class HairsaloonController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
         }
+        else {
+            WrongTextLabel.setVisible(true);
+        }
+
     }
 }

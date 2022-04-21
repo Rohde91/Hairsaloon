@@ -22,7 +22,7 @@
          </children>
       </AnchorPane>
    </bottom>
-   <top>
+   <center>
       <AnchorPane prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="248.0" layoutY="14.0" text="Hårmoni'ka">
@@ -47,7 +47,12 @@
                   <Font size="24.0" />
                </font>
             </Button>
+            <Label fx:id="WrongTextLabel" layoutX="548.0" layoutY="241.0" prefHeight="31.0" prefWidth="185.0" text="Wrong email or password" textFill="#f23c3c" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-   </top>
+   </center>
 </BorderPane>
