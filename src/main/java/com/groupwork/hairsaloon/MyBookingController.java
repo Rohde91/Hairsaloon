@@ -1,25 +1,28 @@
 package com.groupwork.hairsaloon;
-//com.groupwork.hairsaloon.MenuController
-import Trickster.User;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
-public class MenuController implements Initializable {
+public class MyBookingController {
+
+    @FXML
+    private TableView<?> costumerBookingList;
 
     @FXML
     private Button createBooking;
+
+    @FXML
+    private Button createCostumer;
 
     @FXML
     private Button editBooking;
@@ -34,7 +37,7 @@ public class MenuController implements Initializable {
     private Button logoutButton;
 
     @FXML
-    void createBookingScene(ActionEvent event) {
+    void costumerBookingList(ActionEvent event) {
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateBooking.fxml")));
@@ -45,7 +48,10 @@ public class MenuController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    @FXML
+    void createBookingScene(ActionEvent event) {
 
     }
 
@@ -139,8 +145,5 @@ public class MenuController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 }
+
