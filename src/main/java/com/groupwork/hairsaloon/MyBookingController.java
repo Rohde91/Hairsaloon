@@ -118,7 +118,7 @@ public class MyBookingController {
     @FXML
     void myBookingScene(ActionEvent event) {
         try {
-            HairsaloonController hc = new HairsaloonController();
+            LoginController hc = new LoginController();
             hc.user = null;
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyBookingScene.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -133,7 +133,7 @@ public class MyBookingController {
     @FXML
     void terminateSession(ActionEvent event) {
         try {
-            HairsaloonController hc = new HairsaloonController();
+            LoginController hc = new LoginController();
             hc.user = null;
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
