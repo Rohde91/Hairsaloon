@@ -287,7 +287,6 @@ public class CreateBooking_Controller implements Initializable {
                 Label l = (Label) node;
                 l.setBackground(null); //new Background(new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY))
                 l.setText("     -          ");
-                //TODO Sæt også baggrundsfarve til null?
             }
         }
     }
