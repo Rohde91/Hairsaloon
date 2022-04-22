@@ -3,11 +3,11 @@
 
 Hårde krav:
  Medarbejdere skal kunne logge ind og ud af systemet.
-• Det skal være muligt at oprette og slette tidsbestillinger
-• Det skal være muligt at slå tidsbestillinger op og rette i dem.
-• Tidsbestillinger må ikke gå i konflikt – en medarbejder kan kun klippe en kunde ad gangen.
-• Tidsbestillingen skal indeholde behandling og hvor lang tid behandlingen tager.
-• Systemet skal opbevare data struktureret og permanent.
+• Det skal være muligt at oprette og slette tidsbestillinger. - 50%
+• Det skal være muligt at slå tidsbestillinger op og rette i dem. - 0%
+• Tidsbestillinger må ikke gå i konflikt – en medarbejder kan kun klippe en kunde ad gangen. - 50%
+• Tidsbestillingen skal indeholde behandling og hvor lang tid behandlingen tager. - 
+• Systemet skal opbevare data struktureret og permanent. - 75%
 
 Tilføjelse:
 • 5. april – Skat kræver at aftaler bliver liggende i 5 år som dokumentation – en aftale må dog godt
