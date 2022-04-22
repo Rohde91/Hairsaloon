@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ADMMenuController implements Initializable {
-
+        //Admin Controller
         @FXML
         private Button createBooking;
 

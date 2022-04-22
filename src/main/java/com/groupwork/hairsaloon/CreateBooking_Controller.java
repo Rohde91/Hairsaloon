@@ -2,6 +2,7 @@ package com.groupwork.hairsaloon;
 
 import Gamez4ever.CalenderFunctions;
 import Trickster.Booking;
+import Trickster.BookingDetails;
 import Trickster.mysql;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -27,6 +28,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 public class CreateBooking_Controller implements Initializable {
@@ -35,6 +43,11 @@ public class CreateBooking_Controller implements Initializable {
 
     Boolean slotSelected = false;
     Label lastLabel;
+
+    Time selectedTime;
+    LocalDate selectedDate;
+    int selectedEmployeeID;
+    int selectedTreatmentID;
 
     @FXML
     private ChoiceBox<?> chooseStylist;
@@ -197,10 +210,24 @@ public class CreateBooking_Controller implements Initializable {
                         //rename to showTreatmentDuration:
                         showTreatmentTime.setText(msql.getTreatmentDuration(treatmentName).toString());
                         showTreatmentPrice.setText(msql.getTreatmentPrice(treatmentName).toString());
+                        selectedTreatmentID = msql.getTreatmentIDFromName(treatmentName);
+                    System.out.println(selectedTreatmentID);
+                }
+            }
+        });
+
+        choiceBoxEmployees.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+                if (choiceBoxEmployees.getItems().get((Integer) number2) != null) {
+                    selectedEmployeeID = msql.getEmployeeIDFromName(choiceBoxEmployees.getItems().get((Integer) number2).toString());
+                    System.out.println(choiceBoxEmployees.getItems().get((Integer) number2));
+                    System.out.println(selectedEmployeeID);
 
                 }
             }
         });
+
         //WeekSpinner:
         SpinnerValueFactory<Integer> weekNumberValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,52,15);
         this.WeekSpinner.setValueFactory(weekNumberValueFactory);
@@ -245,23 +272,11 @@ public class CreateBooking_Controller implements Initializable {
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
 
-        msql.getBookingDetailsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),
+        //TODO KAN FJERNES!
+        ArrayList<BookingDetails> bookingDetails = new ArrayList();
+        bookingDetails = msql.getBookingDetailsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
-        //Temp:
-        //mysql msql = mysql.getInstance();
-        msql.getBookingDetailsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
-                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
-
-
-
-        //TODO Oversæt fra dato og tid til indexnumre
-        //Dato->MON->1
-        //Tid->8:00->1
-        //Returnerer dato som int ugedag.
-        System.out.println(CalenderFunctions.getDayOfWeekIndex(bookings.get(0).getDate()));
-        //Returnerer tid som int index". Bruger toString da HashMap kun kan bruge String og Int, så ingen Date eller Time...
-        System.out.println(CalenderFunctions.getTimeIndex(bookings.get(0).getTime().toString()));
 
         clearLabels();
 
@@ -310,7 +325,7 @@ public class CreateBooking_Controller implements Initializable {
 
     //TODO Der skal sikkert sættes nogle variable her, til når en create booking funktion kaldes...
     @FXML
-    void createBookingSlot(MouseEvent event) {
+    void createBookingSlot(MouseEvent event) throws ParseException {
         System.out.println("test: you clicked on a time slot");
         //System.out.println(event.getSource());
         Label l = (Label) event.getSource();
@@ -319,26 +334,49 @@ public class CreateBooking_Controller implements Initializable {
 
         if (!l.getText().equalsIgnoreCase("optaget")) {
             //Først test om der allerede er sat en time slot. Hvis der er, clear lastLabel:
+            //TODO Opret bookinger med flere halve timer:
+
+
             if (l.getBackground() == null && lastLabel != null) {
-                lastLabel.setBackground(new Background(new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY)));
+                lastLabel.setBackground(null); //new Background(new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY))
                 lastLabel.setText("     -          ");
-
-
             }
+
+
             l.setText("BOOK");
             l.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
-            //TODO Opret variable her, husk at getDayOfWeek, returnerer "MON" - vi skal bruge datoen til SQL...
-            selectedTimeSlotLabel.setText(
-                    CalenderFunctions.getTime(GridPane.getRowIndex(l))
-                            + " - "
-                            + CalenderFunctions.getDayOfWeek(GridPane.getColumnIndex(l))
-            );
+
+            selectedTimeSlotLabel.setText(CalenderFunctions.getTime(GridPane.getRowIndex(l)) + " " + CalenderFunctions.getDayOfWeek(GridPane.getColumnIndex(l)));
+
+            String strTime = CalenderFunctions.getTime(GridPane.getRowIndex(l)); // "20:15:40";
+            DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+            Time timeValue = new Time(formatter.parse(strTime).getTime());
+            selectedTime = timeValue;
+
+            selectedDate = CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(GridPane.getColumnIndex(l)-1);
+
             lastLabel = l;
 
         } else {
             //TODO Lav pop-up-box eller label til at vise beskeden:
             System.out.println("Du kan ikke vælge et tidspunkt, der allerede er optaget. Prøv igen.");
         }
+    }
+
+    @FXML
+    void createBookingInSQLButton(MouseEvent event) {
+
+        Booking b = new Booking();
+        b.setTime(selectedTime);
+        b.setLdate(selectedDate);
+        b.setFk_EmployeeID(selectedEmployeeID);
+        b.setFk_TreatmentID(selectedTreatmentID);
+        LoginController lc = new LoginController();
+        b.setFk_CostumerID(lc.user.getId());
+
+        msql.createBookingInSQL(b);
+
+        //TODO Send user videre til næste skærm.
     }
 }
 

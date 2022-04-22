@@ -97,6 +97,7 @@ public class mysql {
     public Customer BuildCustomerObject(ResultSet rs) throws SQLException {
         Customer customer = new Customer();
         while (rs.next()) {
+            customer.setId(rs.getInt("CustomerID"));
             customer.setName(rs.getString("Name"));
             customer.setEmail(rs.getString("Email"));
             customer.setAddress(rs.getString("Address"));
@@ -109,6 +110,7 @@ public class mysql {
     public Trickster.Employee BuildEmployeeObject(ResultSet rs) throws SQLException {
         Trickster.Employee employee = new Trickster.Employee();
         while (rs.next()) {
+            employee.setId(rs.getInt("EmployeeID"));
             employee.setName(rs.getString("Name"));
             employee.setEmail(rs.getString("Email"));
             employee.setAddress(rs.getString("Address"));
@@ -296,7 +298,7 @@ public class mysql {
                     prepareStatement("INSERT INTO Booking(fk_CustomerID, Time, Date, fk_treatmentID, fk_EmployeeID) VALUES " +
                             "('" + booking.getFk_CostumerID()
                             + "', '" + booking.getTime()
-                            + "', '" + booking.getDate()
+                            + "', '" + booking.getLdate()
                             + "', '" + booking.getFk_TreatmentID()
                             + "', '" + booking.getFk_EmployeeID()
                             + "')");
@@ -306,6 +308,22 @@ public class mysql {
         }
     }
 
+    //---------------------------------------------------------------------------------------------------------------
+
+    public int getEmployeeIDFromName(String employeeName) {
+        ArrayList<String> al = new ArrayList<String>();
+        int ID = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Employee WHERE Name='" + employeeName + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                ID = resultsetIDs.getInt(1);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return ID;
+    }
     //---------------------------------------------------------------------------------------------------------------
 
     public ArrayList loadEmployeeList() {
@@ -355,7 +373,22 @@ public class mysql {
         //System.out.println(al.toString());
         return al;
     }
+    //---------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------------------------
 
+    public int getTreatmentIDFromName(String treatmentName) {
+        int ID = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Treatments WHERE Name='" + treatmentName + "'"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                ID = resultsetIDs.getInt(1);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return ID;
+    }
     //---------------------------------------------------------------------------------------------------------------
 
     public Double getTreatmentPrice(String treatmentName) {
@@ -400,6 +433,7 @@ public class mysql {
             ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Booking WHERE fk_EmployeeID='" + fk_employeeID + "' AND Date >= '" + startDate + "' AND Date <= '" + endDate + "'"); // ORDER BY Name
             while (resultsetIDs.next()) {
                 //Opret booking her og tilføj til array
+
                 Booking b = new Booking();
                 b.setBookingID(resultsetIDs.getInt(1));
                 b.setFk_CostumerID(resultsetIDs.getInt(2));
@@ -446,8 +480,8 @@ public class mysql {
             ResultSet resultsetIDs = statement.executeQuery(sql);
             while (resultsetIDs.next()) {
                 //TODO Opret bookingdetails her og tilføj til array
-/*                BookingDetails b = new BookingDetails();
-                b.setBookingID(resultsetIDs.getInt(1));
+               BookingDetails b = new BookingDetails();
+                /* b.setBookingID(resultsetIDs.getInt(1));
                 b.setFk_CostumerID(resultsetIDs.getInt(2));
                 b.setTime(resultsetIDs.getTime(3));
                 b.setDate(resultsetIDs.getDate(4));
@@ -455,20 +489,49 @@ public class mysql {
                 b.setFk_EmployeeID(resultsetIDs.getInt(6));
                 bookingDetails.add(b);*/
 
-                System.out.print(resultsetIDs.getString(1) + " - ");
-                System.out.print(resultsetIDs.getString(2) + " - ");
-                System.out.print(resultsetIDs.getString(3) + " - ");
-                System.out.print(resultsetIDs.getString(4) + " - ");
-                System.out.print(resultsetIDs.getString(5) + " - ");
-                System.out.print(resultsetIDs.getString(6) + " - ");
-                System.out.print(resultsetIDs.getString(7) + " - ");
-                System.out.print(resultsetIDs.getString(8) + " - ");
-                System.out.print(resultsetIDs.getString(9) + " - ");
-                System.out.print(resultsetIDs.getString(10) + " - ");
-                System.out.print(resultsetIDs.getString(11) + " - ");
-                System.out.print(resultsetIDs.getString(12) + " - ");
-                System.out.print(resultsetIDs.getString(13) + " - ");
-                System.out.println("");
+                b.setBookingID(resultsetIDs.getInt(1)); // bookingID
+                b.setFk_CostumerID(resultsetIDs.getInt(2)); // customerID
+                b.setTime(resultsetIDs.getTime(3)); // time
+                b.setDate(resultsetIDs.getDate(4)); // date
+                //resultsetIDs.getInt(5); // treatmentID
+                //resultsetIDs.getInt(6); // employeeID
+                //resultsetIDs.getInt(7); // customerID
+                b.setCustomerName(resultsetIDs.getString(8)); // customerName
+                b.setCustomerEmail(resultsetIDs.getString(9)); // customerEmail
+                b.setCustomerPhone(resultsetIDs.getString(10)); // customerPhone
+                b.setCustomerPassword(resultsetIDs.getString(11)); // customerPassword
+                b.setFk_TreatmentID(resultsetIDs.getInt(12)); // treatmentID
+                b.setTreatmentName(resultsetIDs.getString(13)); // treatmentName
+                b.setTreatmentPrice(resultsetIDs.getString(14)); // treatmentPrice
+                b.setTreatmentDuration(resultsetIDs.getString(15)); // treatment duration
+                b.setFk_EmployeeID(resultsetIDs.getInt(16)); // employeeID
+                b.setEmployeeName(resultsetIDs.getString(17)); // employeeName
+                b.setEmployeeEmail(resultsetIDs.getString(18)); // employeeEmail
+                b.setEmployeePassword(resultsetIDs.getString(19)); // employeePassword
+                b.setEmployeePhone(resultsetIDs.getString(20)); // employeePhone
+                bookingDetails.add(b);
+
+/*                System.out.print(resultsetIDs.getInt(1) + " - "); // bookingID
+                System.out.print(resultsetIDs.getInt(2) + " - "); // customerID
+                System.out.print(resultsetIDs.getTime(3) + " - "); // time
+                System.out.print(resultsetIDs.getDate(4) + " - "); // date
+                System.out.print(resultsetIDs.getInt(5) + " - "); // treatmentID
+                System.out.print(resultsetIDs.getInt(6) + " - "); // employeeID
+                System.out.print(resultsetIDs.getInt(7) + " - "); // customerID
+                System.out.print(resultsetIDs.getString(8) + " - "); // customerName
+                System.out.print(resultsetIDs.getString(9) + " - "); // customerEmail
+                System.out.print(resultsetIDs.getString(10) + " - "); // customerPhone
+                System.out.print(resultsetIDs.getString(11) + " - "); // customerPassword
+                System.out.print(resultsetIDs.getInt(12) + " - "); // treatmentID
+                System.out.print(resultsetIDs.getString(13) + " - "); // treatmentName
+                System.out.print(resultsetIDs.getString(14) + " - "); // treatmentPrice
+                System.out.print(resultsetIDs.getTime(15) + " - "); // treatment duration
+                System.out.print(resultsetIDs.getInt(16) + " - "); // employeeID
+                System.out.print(resultsetIDs.getString(17) + " - "); // employeeName
+                System.out.print(resultsetIDs.getString(18) + " - "); // employeeEmail
+                System.out.print(resultsetIDs.getString(19) + " - "); // employeePassword
+                System.out.print(resultsetIDs.getString(20) + " - "); // employeePhone
+                System.out.println("");*/
 
             }
         } catch(Exception e){

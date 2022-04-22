@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.CreateBooking_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.CreateBooking_Controller">
    <left>
       <AnchorPane prefHeight="701.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
@@ -240,6 +240,7 @@
             <Label fx:id="startdatoLabel" layoutX="578.0" layoutY="150.0" prefHeight="17.0" prefWidth="96.0" text="startdato" />
             <Label fx:id="slutdatoLabel" layoutX="712.0" layoutY="150.0" prefHeight="17.0" prefWidth="96.0" text="slutdato" />
             <Label fx:id="selectedTimeSlotLabel" layoutX="242.0" layoutY="641.0" text="You have selected:" />
+            <Button layoutX="750.0" layoutY="646.0" mnemonicParsing="false" onMouseReleased="#createBookingInSQLButton" text="Book" />
          </children>
       </AnchorPane>
    </center>

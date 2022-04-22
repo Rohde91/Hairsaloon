@@ -9,6 +9,7 @@ public class Booking {
     private int bookingID, fk_CostumerID;
     private Time time;
     private Date date;
+    private LocalDate ldate;
     private int fk_TreatmentID,	fk_EmployeeID;
 
     public Booking() {
@@ -21,7 +22,21 @@ public class Booking {
         this.fk_TreatmentID = fk_TreatmentID;
         this.fk_EmployeeID = fk_EmployeeID;
     }
+    public Booking(int fk_CostumerID, Time time, LocalDate ldate, int fk_TreatmentID, int fk_EmployeeID) {
+        this.fk_CostumerID = fk_CostumerID;
+        this.time = time;
+        this.ldate = ldate;
+        this.fk_TreatmentID = fk_TreatmentID;
+        this.fk_EmployeeID = fk_EmployeeID;
+    }
 
+    public LocalDate getLdate() {
+        return ldate;
+    }
+
+    public void setLdate(LocalDate ldate) {
+        this.ldate = ldate;
+    }
 
     public int getBookingID() {
         return bookingID;

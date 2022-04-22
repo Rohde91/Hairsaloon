@@ -12,6 +12,7 @@ public class BookingDetails {
     private String customerEmail;
     private String customerPhone;
     private String customerAddress;
+    private String customerPassword;
 
     private Time time;
     private Date date;
@@ -26,17 +27,19 @@ public class BookingDetails {
     private String employeeEmail;
     private String employeeAddress;
     private String employeePhone;
+    private String employeePassword;
 
     public BookingDetails() {
     }
 
-    public BookingDetails(int bookingID, int fk_CostumerID, String customerName, String customerEmail, String customerPhone, String customerAddress, Time time, Date date, int fk_TreatmentID, String treatmentName, String treatmentPrice, String treatmentDuration, int fk_EmployeeID, String employeeName, String employeeEmail, String employeeAddress, String employeePhone) {
+    public BookingDetails(int bookingID, int fk_CostumerID, String customerName, String customerEmail, String customerPhone, String customerAddress, String customerPassword, Time time, Date date, int fk_TreatmentID, String treatmentName, String treatmentPrice, String treatmentDuration, int fk_EmployeeID, String employeeName, String employeeEmail, String employeeAddress, String employeePhone, String employeePassword) {
         this.bookingID = bookingID;
         this.fk_CostumerID = fk_CostumerID;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.customerPhone = customerPhone;
         this.customerAddress = customerAddress;
+        this.customerPassword = customerPassword;
         this.time = time;
         this.date = date;
         this.fk_TreatmentID = fk_TreatmentID;
@@ -48,29 +51,7 @@ public class BookingDetails {
         this.employeeEmail = employeeEmail;
         this.employeeAddress = employeeAddress;
         this.employeePhone = employeePhone;
-    }
-
-    @Override
-    public String toString() {
-        return "BookingDetails{" +
-                "bookingID=" + bookingID +
-                ", fk_CostumerID=" + fk_CostumerID +
-                ", customerName='" + customerName + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", customerPhone='" + customerPhone + '\'' +
-                ", customerAddress='" + customerAddress + '\'' +
-                ", time=" + time +
-                ", date=" + date +
-                ", fk_TreatmentID=" + fk_TreatmentID +
-                ", treatmentName='" + treatmentName + '\'' +
-                ", treatmentPrice='" + treatmentPrice + '\'' +
-                ", treatmentDuration='" + treatmentDuration + '\'' +
-                ", fk_EmployeeID=" + fk_EmployeeID +
-                ", employeeName='" + employeeName + '\'' +
-                ", employeeEmail='" + employeeEmail + '\'' +
-                ", employeeAddress='" + employeeAddress + '\'' +
-                ", employeePhone='" + employeePhone + '\'' +
-                '}';
+        this.employeePassword = employeePassword;
     }
 
     public int getBookingID() {
@@ -119,6 +100,14 @@ public class BookingDetails {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+    public String getCustomerPassword() {
+        return customerPassword;
+    }
+
+    public void setCustomerPassword(String customerPassword) {
+        this.customerPassword = customerPassword;
     }
 
     public Time getTime() {
@@ -207,5 +196,13 @@ public class BookingDetails {
 
     public void setEmployeePhone(String employeePhone) {
         this.employeePhone = employeePhone;
+    }
+
+    public String getEmployeePassword() {
+        return employeePassword;
+    }
+
+    public void setEmployeePassword(String employeePassword) {
+        this.employeePassword = employeePassword;
     }
 }

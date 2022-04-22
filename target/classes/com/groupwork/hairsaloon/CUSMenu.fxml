@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.EMPMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupwork.hairsaloon.CUSMenuController">
    <left>
       <AnchorPane prefHeight="701.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,17 +27,17 @@
             <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" minWidth="120.0" onAction="#createCostumerScene" text="Opret kunde" />
             <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" minWidth="120.0" onAction="#editCostumerScene" text="Ret kunde" />
             <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" minWidth="120.0" onAction="#myBookingScene" text="Mine aftaler" />
-            <Label layoutX="10.0" layoutY="423.0" text="Adminestrator" visible="false">
+            <Label layoutX="10.0" layoutY="423.0" text="Adminestrator">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="10.0" layoutY="450.0" mnemonicParsing="false" minWidth="120.0" onAction="#editTreatment" text="Ret behandling" visible="false" />
-            <Button layoutX="10.0" layoutY="475.0" mnemonicParsing="false" minWidth="120.0" onAction="#deleteTreatment" text="Slet behandling" visible="false" />
-            <Button layoutX="10.0" layoutY="500.0" mnemonicParsing="false" minWidth="120.0" onAction="#createTreatment" text="Opret behandling" visible="false" />
-            <Button layoutX="10.0" layoutY="525.0" mnemonicParsing="false" minWidth="120.0" onAction="#createNewEmployee" text="Opret medarbejder" visible="false" />
-            <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" minWidth="120.0" onAction="#editEmployee" text="Ret medarbejder" visible="false" />
-            <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" minWidth="120.0" onAction="#deleteEmployee" text="Slet medarbejder" visible="false" />
+            <Button layoutX="10.0" layoutY="450.0" mnemonicParsing="false" minWidth="120.0" onAction="#editTreatment" text="Ret behandling" />
+            <Button layoutX="10.0" layoutY="475.0" mnemonicParsing="false" minWidth="120.0" onAction="#deleteTreatment" text="Slet behandling" />
+            <Button layoutX="10.0" layoutY="500.0" mnemonicParsing="false" minWidth="120.0" onAction="#createTreatment" text="Opret behandling" />
+            <Button layoutX="10.0" layoutY="525.0" mnemonicParsing="false" minWidth="120.0" onAction="#createNewEmployee" text="Opret medarbejder" />
+            <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" minWidth="120.0" onAction="#editEmployee" text="Ret medarbejder" />
+            <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" minWidth="120.0" onAction="#deleteEmployee" text="Slet medarbejder" />
             <Label layoutX="10.0" layoutY="270.0" text="Medarbejder">
                <font>
                   <Font size="18.0" />

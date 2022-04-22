@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class EMPMenuController implements Initializable {
-
+    //Employee Controller
     @FXML
     private Button createBooking;
 
