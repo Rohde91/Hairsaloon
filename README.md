@@ -4,7 +4,7 @@
 Hårde krav:
  Medarbejdere skal kunne logge ind og ud af systemet.
 • Det skal være muligt at oprette og slette tidsbestillinger. - 50%
-• Det skal være muligt at slå tidsbestillinger op og rette i dem. - 0% 
+• Det skal være muligt at slå tidsbestillinger op og rette i dem. - 20% 
 • Tidsbestillinger må ikke gå i konflikt – en medarbejder kan kun klippe en kunde ad gangen. - 50%
 • Tidsbestillingen skal indeholde behandling og hvor lang tid behandlingen tager. - 80%
 • Systemet skal opbevare data struktureret og permanent. - 75%
