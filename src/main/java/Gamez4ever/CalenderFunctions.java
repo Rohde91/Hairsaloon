@@ -173,6 +173,28 @@ public class CalenderFunctions {
         return dayOfWeek-1;
     }
 
+    public static String getDayOfWeek(int indexNumber){
+        String weekday = "";
+        switch(indexNumber){
+            case 1:
+                weekday = "MON";
+                break;
+            case 2:
+                weekday = "TUE";
+                break;
+            case 3:
+                weekday = "WED";
+            break;
+            case 4:
+                weekday = "THU";
+            break;
+            case 5:
+                weekday = "FRI";
+            break;
+        }
+        return weekday;
+    }
+
     public static int getTimeIndex(String time){
         HashMap<String, Integer> index = new HashMap<>();
         Time t = new Time(8);
@@ -184,6 +206,18 @@ public class CalenderFunctions {
             index.put(t.toString(),numberOfHalfHours+1);
         }
         return index.get(time);
+    }
+    public static String getTime(int indexNumber){
+        HashMap<Integer, String> index = new HashMap<>();
+        Time t = new Time(8);
+        int minPerHalfHour = 30;
+        for (int numberOfHalfHours = 0; numberOfHalfHours <= 16; numberOfHalfHours++) {
+            int x;
+            x = minPerHalfHour * numberOfHalfHours;
+            t.setTime(1000*60*60*7 + 1000*60 * x);
+            index.put(numberOfHalfHours+1,t.toString());
+        }
+        return index.get(indexNumber);
     }
 }
 
