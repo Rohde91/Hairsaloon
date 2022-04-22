@@ -3,6 +3,7 @@ package Trickster;
 public class User {
 
     //Consider making User into a singleton
+    protected int id;
     protected String name;
     protected String email;
     protected String phone;
@@ -17,12 +18,21 @@ public class User {
         this.password = password;
     }
     //create user
-    public User(String name, String email, String phone, String address, String password) {
+    public User(int id, String name, String email, String phone, String address, String password) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUserSubClass(User user) {

@@ -20,7 +20,9 @@ public class Main {
 
         Time t = new Time(1);
         Date dt = new Date();
-        Booking b = new Booking(1,t,dt,1,1);
+        //LocalDate ld = new LocalDate(1,1,1);
+        LocalDate myObj = LocalDate.now();
+        Booking b = new Booking(1,t,myObj,1,1);
         msql.createBookingInSQL(b);
 
 

@@ -195,6 +195,28 @@ public class CalenderFunctions {
         return weekday;
     }
 
+    public static int getTimeIndexDurations(String time){
+        int index = 0;
+        switch(time){
+            case "00:30:00":
+                index = 0;
+                break;
+            case "01:00:00":
+                index = 1;
+                break;
+            case "01:30:00":
+                index = 2;
+                break;
+            case "02:00:00":
+                index = 3;
+                break;
+            case "02:30:00":
+                index = 4;
+                break;
+        }
+        return index;
+    }
+
     public static int getTimeIndex(String time){
         HashMap<String, Integer> index = new HashMap<>();
         Time t = new Time(8);
@@ -219,5 +241,6 @@ public class CalenderFunctions {
         }
         return index.get(indexNumber);
     }
+
 }
 
