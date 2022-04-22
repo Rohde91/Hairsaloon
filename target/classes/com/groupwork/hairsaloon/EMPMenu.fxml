@@ -19,25 +19,25 @@
                   <Image url="@../../../../../../png-transparent-letter-m-others.png" />
                </image>
             </ImageView>
-            <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" onAction="#createBookingScene" styleClass="button1" text="Opret aftale" />
-            <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
-            <Button fx:id="findCostumer" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
-            <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
-            <Button layoutX="10.0" layoutY="347.0" mnemonicParsing="false" onAction="#editCostumerBookingScene" text="Ret aftaler" />
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#createCostumerScene" text="Opret kunde" />
-            <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" onAction="#editCostumerScene" text="Ret kunde" />
-            <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
+            <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" minWidth="120.0" mnemonicParsing="false" onAction="#createBookingScene" styleClass="button1" text="Opret aftale" />
+            <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" minWidth="120.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
+            <Button fx:id="findCostumer" layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
+            <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
+            <Button layoutX="10.0" layoutY="347.0" mnemonicParsing="false" minWidth="120.0" onAction="#editCostumerBookingScene" text="Ret aftaler" />
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" minWidth="120.0" onAction="#createCostumerScene" text="Opret kunde" />
+            <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" minWidth="120.0" onAction="#editCostumerScene" text="Ret kunde" />
+            <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" minWidth="120.0" onAction="#myBookingScene" text="Mine aftaler" />
             <Label layoutX="10.0" layoutY="423.0" text="Adminestrator" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="10.0" layoutY="450.0" mnemonicParsing="false" onAction="#editTreatment" text="Ret behandling" visible="false" />
-            <Button layoutX="10.0" layoutY="475.0" mnemonicParsing="false" onAction="#deleteTreatment" text="Slet behandling" visible="false" />
-            <Button layoutX="10.0" layoutY="500.0" mnemonicParsing="false" onAction="#createTreatment" text="Opret behandling" visible="false" />
-            <Button layoutX="10.0" layoutY="525.0" mnemonicParsing="false" onAction="#createNewEmployee" text="Opret medarbejder" visible="false" />
-            <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" onAction="#editEmployee" text="Ret medarbejder" visible="false" />
-            <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Slet medarbejder" visible="false" />
+            <Button layoutX="10.0" layoutY="450.0" mnemonicParsing="false" minWidth="120.0" onAction="#editTreatment" text="Ret behandling" visible="false" />
+            <Button layoutX="10.0" layoutY="475.0" mnemonicParsing="false" minWidth="120.0" onAction="#deleteTreatment" text="Slet behandling" visible="false" />
+            <Button layoutX="10.0" layoutY="500.0" mnemonicParsing="false" minWidth="120.0" onAction="#createTreatment" text="Opret behandling" visible="false" />
+            <Button layoutX="10.0" layoutY="525.0" mnemonicParsing="false" minWidth="120.0" onAction="#createNewEmployee" text="Opret medarbejder" visible="false" />
+            <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" minWidth="120.0" onAction="#editEmployee" text="Ret medarbejder" visible="false" />
+            <Button layoutX="10.0" layoutY="575.0" mnemonicParsing="false" minWidth="120.0" onAction="#deleteEmployee" text="Slet medarbejder" visible="false" />
             <Label layoutX="10.0" layoutY="270.0" text="Medarbejder">
                <font>
                   <Font size="18.0" />
