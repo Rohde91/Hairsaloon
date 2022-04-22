@@ -1,24 +1,45 @@
 package com.groupwork.hairsaloon;
 
+import Trickster.mysql;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
-public class EMPMenuController implements Initializable {
-    //Employee Controller
+public class CreateCustomerController {
+    mysql msql = mysql.getInstance();
+    @FXML
+    private TextField costumerAddressInput;
+
+    @FXML
+    private TextField costumerMailInput;
+
+    @FXML
+    private TextField costumerNameInput;
+
+    @FXML
+    private PasswordField costumerPasswordInput;
+
+    @FXML
+    private TextField costumerPhoneInput;
+
     @FXML
     private Button createBooking;
+
+    @FXML
+    private Button createCostumer;
+
+    @FXML
+    private Button createCostumerInDatabase;
 
     @FXML
     private Button editBooking;
@@ -47,17 +68,23 @@ public class EMPMenuController implements Initializable {
     }
 
     @FXML
+    void createCostumerButtonAction(ActionEvent event) {
+        String name = costumerNameInput.getText();
+        String email = costumerMailInput.getText();
+        String phone = costumerPhoneInput.getText();
+        String address = costumerAddressInput.getText();
+        String password = costumerPasswordInput.getText();
+        msql.createNewCustomer(name, email, phone, address, password);
+        costumerNameInput.setText(null);
+        costumerMailInput.setText(null);
+        costumerPhoneInput.setText(null);
+        costumerAddressInput.setText(null);
+        costumerPasswordInput.setText(null);
+    }
+
+    @FXML
     void createCostumerScene(ActionEvent event) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateCustomer.fxml")));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @FXML
@@ -136,7 +163,6 @@ public class EMPMenuController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
@@ -152,11 +178,6 @@ public class EMPMenuController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
 }
