@@ -325,7 +325,22 @@ public class mysql {
     }
 
     //---------------------------------------------------------------------------------------------------------------
-
+    public ArrayList loadCustomerList() {
+        ArrayList<String> al = new ArrayList<String>();
+        String email = "";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Customer"); // ORDER BY Name
+            while (resultsetIDs.next()) {
+                email = resultsetIDs.getString(3);
+                al.add(email);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return al;
+    }
+    // ______________________________________________________________________________________________________________
     public ArrayList loadTreatmentList() {
         ArrayList<String> al = new ArrayList<String>();
 
