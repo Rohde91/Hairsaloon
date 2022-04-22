@@ -15,7 +15,7 @@ import javafx.scene.Node;
 import java.io.IOException;
 import java.util.Objects;
 
-public class HairsaloonController {
+public class LoginController {
     public TextField usernameInputfield;
     public PasswordField passwordInputfield;
     //TODO rename to loggedInUser:
@@ -51,7 +51,7 @@ public class HairsaloonController {
         //TODO duplicated code from mysql trylogin
 
         if (msql.userType(email).equals("Customer") && user != null) {
-            goToMenu(actionEvent,"Menu.fxml");
+            goToMenu(actionEvent,"CUSMenu.fxml");
         }
 
         else if (msql.userType(email).equals("Employee") && user != null) {

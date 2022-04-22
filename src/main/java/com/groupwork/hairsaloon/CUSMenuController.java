@@ -1,6 +1,5 @@
 package com.groupwork.hairsaloon;
 //com.groupwork.hairsaloon.MenuController
-import Trickster.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +15,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class MenuController implements Initializable {
+public class CUSMenuController implements Initializable {
 
     @FXML
     private Button createBooking;
@@ -112,7 +111,7 @@ public class MenuController implements Initializable {
     @FXML
     void myBookingScene(ActionEvent event) {
         try {
-            HairsaloonController hc = new HairsaloonController();
+            LoginController hc = new LoginController();
             hc.user = null;
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyBookingScene.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -127,7 +126,7 @@ public class MenuController implements Initializable {
     @FXML
     void terminateSession(ActionEvent event) {
         try {
-            HairsaloonController hc = new HairsaloonController();
+            LoginController hc = new LoginController();
             hc.user = null;
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
