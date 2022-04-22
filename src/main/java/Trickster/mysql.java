@@ -330,7 +330,7 @@ public class mysql {
         String Phone = "";
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Customer"); // ORDER BY Name
+            ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Customer"); // ORDER BY phone
             while (resultsetIDs.next()) {
                 Phone = resultsetIDs.getString(4);
                 al.add(Phone);

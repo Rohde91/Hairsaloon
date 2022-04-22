@@ -51,6 +51,9 @@ public class FindBookingController implements Initializable {
     @FXML
     void costumerBookingList(ActionEvent event) {
 
+
+
+
     }
 
     @FXML
@@ -161,8 +164,6 @@ public class FindBookingController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // Set dropdowns
-
-
         ChoiceBox choiceBoxEmployees = ChoiceBoxFrisør;
         ArrayList employees = msql.loadEmployeeList();
         choiceBoxEmployees.getItems().addAll(employees);
