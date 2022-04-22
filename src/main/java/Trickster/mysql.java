@@ -327,13 +327,13 @@ public class mysql {
     //---------------------------------------------------------------------------------------------------------------
     public ArrayList loadCustomerList() {
         ArrayList<String> al = new ArrayList<String>();
-        String email = "";
+        String Phone = "";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultsetIDs = statement.executeQuery("SELECT * FROM Customer"); // ORDER BY Name
             while (resultsetIDs.next()) {
-                email = resultsetIDs.getString(3);
-                al.add(email);
+                Phone = resultsetIDs.getString(4);
+                al.add(Phone);
             }
         } catch(Exception e){
             e.printStackTrace();
