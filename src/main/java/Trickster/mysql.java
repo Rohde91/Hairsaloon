@@ -478,7 +478,7 @@ public class mysql {
         return bookingDetails;
     }
     //TEST
-    public static ArrayList getBookingDetailsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
+    /*public static ArrayList getBookingDetailsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
         //Booking array initialisér her
         ArrayList<BookingDetails> bookingDetails = new ArrayList();
         try {
@@ -505,7 +505,7 @@ public class mysql {
                 System.out.println(resultsetIDs.getTime(3));
                 System.out.println(resultsetIDs.getDate(4));
                 System.out.println(resultsetIDs.getInt(5));
-                System.out.println(resultsetIDs.getInt(6));*/
+                System.out.println(resultsetIDs.getInt(6));
 
                 System.out.print(resultsetIDs.getString(1) + " - ");
                 System.out.print(resultsetIDs.getString(2) + " - ");
@@ -520,7 +520,7 @@ public class mysql {
                 System.out.print(resultsetIDs.getString(11) + " - ");
                 System.out.print(resultsetIDs.getString(12) + " - ");
                 System.out.print(resultsetIDs.getString(13) + " - ");
-                System.out.println("");
+                System.out.println("");*/
 
                 /*System.out.println(resultsetIDs.getInt(1));
                 System.out.println(resultsetIDs.getString(2));
@@ -534,7 +534,7 @@ public class mysql {
                 System.out.println(resultsetIDs.getString(10));
                 System.out.println(resultsetIDs.getInt(11));
                 System.out.println(resultsetIDs.getInt(12));
-                System.out.println(resultsetIDs.getInt(13));*/
+                System.out.println(resultsetIDs.getInt(13));
 
             }
         } catch(Exception e){
@@ -543,5 +543,6 @@ public class mysql {
         //Returnér booking array
         return bookingDetails;
     }
+    */
 
 }

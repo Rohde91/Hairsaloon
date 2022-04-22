@@ -25,7 +25,7 @@
             <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
             <Button layoutX="10.0" layoutY="347.0" mnemonicParsing="false" minWidth="120.0" onAction="#editCostumerBookingScene" text="Ret aftaler" />
             <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" minWidth="120.0" onAction="#createCostumerScene" text="Opret kunde" />
-            <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" minWidth="120.0"onAction="#editCostumerScene" text="Ret kunde" />
+            <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" minWidth="120.0" onAction="#editCostumerScene" text="Ret kunde" />
             <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" minWidth="120.0" onAction="#myBookingScene" text="Mine aftaler" />
             <Label layoutX="10.0" layoutY="423.0" text="Adminestrator" visible="false">
                <font>
