@@ -10,21 +10,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 
 public class CreateBooking_Controller implements Initializable {
     mysql msql = mysql.getInstance();
     String treatmentName = "";
+
+    Boolean slotSelected = false;
+    Label lastLabel;
 
     @FXML
     private ChoiceBox<?> chooseStylist;
@@ -165,7 +175,8 @@ public class CreateBooking_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //CalenderFunctions.chooseDate();
         CalenderFunctions.getAllDaysOfTheWeek(20, Locale.ENGLISH).forEach(System.out::println);
-        // Giv chooseStylist og chooseStylist1 bedre navne.
+        //TODO Giv chooseStylist og chooseStylist1 bedre navne. FX "chooseEmpList" og "chooseTreatmentList"
+
         clearLabels();
 
         // Set dropdowns
@@ -176,7 +187,6 @@ public class CreateBooking_Controller implements Initializable {
         ChoiceBox choiceBoxTreatments = chooseStylist1;
         ArrayList treatments = msql.loadTreatmentList();
         choiceBoxTreatments.getItems().addAll(treatments);
-
 
         choiceBoxTreatments.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -191,38 +201,53 @@ public class CreateBooking_Controller implements Initializable {
                 }
             }
         });
-
         //WeekSpinner:
         SpinnerValueFactory<Integer> weekNumberValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,52,15);
         this.WeekSpinner.setValueFactory(weekNumberValueFactory);
         WeekSpinner.setEditable(true);
         //TODO Load kalender med den uge, som er valgt som standard, og load derefter igen når WeekSpinner ændres - se weekSelected():
-        //weekspinner ER lavet, mangler on load.
-
-        //TEST
-        //setLabel(2,2,"test");
-
     }
 
     //TODO HUSK at sætte diverse ting, som bliver sat herunder i Initialize, så der er noget data, der er "preloaded".
     @FXML
     void weekSelected(MouseEvent event) {
-        //TODO CLEAN CODE LIGE DET HER SPAGHETTI !!!
+        //TODO
+        // CLEAN CODE LIGE DET HER SPAGHETTI !!!
+        // HOWTO:
+        // 1.  Importér CalenderFunctions
+        // 2.  Opret variable for:
+        // 2.1 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0)
+        // 2.2 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4)
+        // 2.3 chooseStylist.getValue().toString()
+        // 2.4 startdatoLabel.setText(2.1);
+        // 2.5 slutdatoLabel.setText(2.2);
+        // 3.  Opret funktion til:
+        //     for(Booking booking: bookings) {
+        //            setLabel(
+        //                    CalenderFunctions.getTimeIndex(booking.getTime().toString()),
+        //                    CalenderFunctions.getDayOfWeekIndex(booking.getDate()),
+        //                    "OPTAGET");
+        //     }
 
+        //TODO Fjern souts...?
         System.out.println("Spinner change");
         System.out.println(WeekSpinner.getValue());
         CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).forEach(System.out::println);
+
         //evt sæt labels i kalenderen MON, Tue etc. til også at vise dato?:
         startdatoLabel.setText(CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0).toString());
         slutdatoLabel.setText(CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4).toString());
 
-        //Opretter array af bookinger som er fra valgt frisør og indenfor start -og slutdato.
+        //Opretter array af bookinger med valgt frisør og indenfor start -og slutdato.
         ArrayList<Booking> bookings = new ArrayList();
         bookings = mysql.getBookingsByWeekAndEmployee(
                 mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
 
+        msql.getBookingDetailsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),
+                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
+                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
         //Temp:
         //mysql msql = mysql.getInstance();
         msql.getBookingDetailsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
@@ -240,7 +265,7 @@ public class CreateBooking_Controller implements Initializable {
 
         clearLabels();
 
-        //Marker alle optagede timeslots med teksten 'OPTAGET':
+        //Markér alle optagede timeslots med teksten 'OPTAGET':
         for(Booking booking: bookings) {
             setLabel(
                     CalenderFunctions.getTimeIndex(booking.getTime().toString()),
@@ -260,10 +285,10 @@ public class CreateBooking_Controller implements Initializable {
         Node result = null;
         ObservableList<Node> children = gridPane.getChildren();
         for (Node node : children) {
-                if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
-                    result = node;
-                    break;
-                }
+            if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
         }
         return result;
     }
@@ -271,12 +296,48 @@ public class CreateBooking_Controller implements Initializable {
     public void clearLabels() {
         ObservableList<Node> children = gridPane.getChildren();
         for (Node node : children) {
-            //clear alle labels, der ikke er overskrifter
+            //clear alle labels, der ikke er overskrifter (ikke række 0 eller kolonne 0)
             if (GridPane.getRowIndex(node)>0 && GridPane.getColumnIndex(node)>0) {
                 Label l = (Label) node;
-                l.setText("-");
+                l.setBackground(null); //new Background(new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY))
+                l.setText("     -          ");
             }
+        }
+    }
 
+    @FXML
+    private Label selectedTimeSlotLabel;
+
+    //TODO Der skal sikkert sættes nogle variable her, til når en create booking funktion kaldes...
+    @FXML
+    void createBookingSlot(MouseEvent event) {
+        System.out.println("test: you clicked on a time slot");
+        //System.out.println(event.getSource());
+        Label l = (Label) event.getSource();
+        System.out.println("Række: " + GridPane.getRowIndex(l));
+        System.out.println("Kolonne: " + GridPane.getColumnIndex(l));
+
+        if (!l.getText().equalsIgnoreCase("optaget")) {
+            //Først test om der allerede er sat en time slot. Hvis der er, clear lastLabel:
+            if (l.getBackground() == null && lastLabel != null) {
+                lastLabel.setBackground(new Background(new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY)));
+                lastLabel.setText("     -          ");
+
+
+            }
+            l.setText("BOOK");
+            l.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+            //TODO Opret variable her, husk at getDayOfWeek, returnerer "MON" - vi skal bruge datoen til SQL...
+            selectedTimeSlotLabel.setText(
+                    CalenderFunctions.getTime(GridPane.getRowIndex(l))
+                            + " - "
+                            + CalenderFunctions.getDayOfWeek(GridPane.getColumnIndex(l))
+            );
+            lastLabel = l;
+
+        } else {
+            //TODO Lav pop-up-box eller label til at vise beskeden:
+            System.out.println("Du kan ikke vælge et tidspunkt, der allerede er optaget. Prøv igen.");
         }
     }
 }
