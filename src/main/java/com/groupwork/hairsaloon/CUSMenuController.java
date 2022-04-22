@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CUSMenuController implements Initializable {
-
+    //Customer Controller
     @FXML
     private Button createBooking;
 
