@@ -304,9 +304,16 @@ public class CreateBooking_Controller implements Initializable {
                     CalenderFunctions.getTimeIndex(booking.getTime().toString()),
                     CalenderFunctions.getDayOfWeekIndex(booking.getDate()),
                     "OPTAGET");
+            setRedLabelColor(
+                    CalenderFunctions.getTimeIndex(booking.getTime().toString()),
+                    CalenderFunctions.getDayOfWeekIndex(booking.getDate()));
         }
     }
-
+    public void setRedLabelColor(int TimeIndex, int DayIndex) {
+        Node n = getNodeByRowColumnIndex(TimeIndex, DayIndex, gridPane);
+        Label l = (Label) n;
+        l.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+    }
     public void setLabel(int TimeIndex, int DayIndex, String labelText) {
         Node n = getNodeByRowColumnIndex(TimeIndex, DayIndex, gridPane);
         Label l = (Label) n;
@@ -391,6 +398,7 @@ public class CreateBooking_Controller implements Initializable {
         b.setFk_TreatmentID(selectedTreatmentID);
         LoginController lc = new LoginController();
         b.setFk_CostumerID(lc.user.getId());
+
 
         msql.createBookingInSQL(b);
 
