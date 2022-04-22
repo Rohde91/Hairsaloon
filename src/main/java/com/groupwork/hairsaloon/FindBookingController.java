@@ -38,14 +38,15 @@ public class FindBookingController implements Initializable {
     @FXML
     private Button logoutButton;
 
-    @FXML
-    private TextField costumerPhoneNumber;
+
 
     @FXML
     private TableView<?> costumerBookingList;
 
     @FXML
     private ChoiceBox<?> ChoiceBoxFrisør;
+    @FXML
+    private ChoiceBox<?> ChoiceBoxPhone;
 
     @FXML
     void costumerBookingList(ActionEvent event) {
@@ -160,10 +161,16 @@ public class FindBookingController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // Set dropdowns
+
+
         ChoiceBox choiceBoxEmployees = ChoiceBoxFrisør;
         ArrayList employees = msql.loadEmployeeList();
         choiceBoxEmployees.getItems().addAll(employees);
-        System.out.println(choiceBoxEmployees.toString());
+
+        ChoiceBox choiceBoxCustomer = ChoiceBoxPhone;
+        ArrayList customer = msql.loadCustomerList();
+        choiceBoxCustomer.getItems().addAll(customer);
+
 
 
     }
