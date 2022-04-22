@@ -38,6 +38,11 @@ public class MyBookingController {
 
     @FXML
     void costumerBookingList(ActionEvent event) {
+
+    }
+
+    @FXML
+    void createBookingScene(ActionEvent event) {
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateBooking.fxml")));
@@ -48,11 +53,6 @@ public class MyBookingController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void createBookingScene(ActionEvent event) {
-
     }
 
     @FXML
