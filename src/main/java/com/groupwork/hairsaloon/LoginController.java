@@ -19,7 +19,7 @@ public class LoginController {
     public TextField usernameInputfield;
     public PasswordField passwordInputfield;
     //TODO rename to loggedInUser:
-    public User user;
+    public static User user;
 
     @FXML
     private Label WrongTextLabel;
