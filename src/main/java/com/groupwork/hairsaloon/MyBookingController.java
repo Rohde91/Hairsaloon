@@ -44,22 +44,25 @@ public class MyBookingController extends LoginController implements Initializabl
     @FXML
     private Label MedarbejderLabel;
     @FXML
+    private Button findCostumer1;
+    @FXML
+    private Button createCostumer1;
+    @FXML
+    private Button findBooking;
+    @FXML
     private TableView<?> costumerBookingList;
 
     @FXML
     private Button createBooking;
 
-    @FXML
-    private Button createCostumer1;
+
 
     @FXML
     private Button editBooking;
 
-    @FXML
-    private Button findBooking;
 
-    @FXML
-    private Button findCostumer1;
+
+
 
     @FXML
     private Button logoutButton;
@@ -192,7 +195,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LoginController hc = new LoginController();
+
         if (msql.userType(user.getEmail()).equals("Customer")) {
             System.out.println("Customer login complete"+" Mybooking");
             AdminestratorLabel.setVisible(false);
@@ -207,6 +210,7 @@ public class MyBookingController extends LoginController implements Initializabl
             createNewEmployee1.setVisible(false);
             editEmployee1.setVisible(false);
             deleteEmployee1.setVisible(false);
+            findBooking.setVisible(false);
 
 
         } else if (msql.userType(user.getEmail()).equals("Employee")) {
@@ -218,6 +222,8 @@ public class MyBookingController extends LoginController implements Initializabl
             createNewEmployee1.setVisible(false);
             editEmployee1.setVisible(false);
             deleteEmployee1.setVisible(false);
+
+
 
 
         }else if (msql.userType(user.getEmail()).equals("Admin")) {
