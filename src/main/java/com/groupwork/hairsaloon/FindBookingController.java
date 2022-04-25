@@ -201,9 +201,9 @@ public class FindBookingController extends LoginController implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+//__________________________________________________________________________________________________________________
         if (msql.userType(user.getEmail()).equals("Customer")) {
-            System.out.println("Customer login complete"+" Mybooking");
+            System.out.println("Customer login complete"+" FindBooking");
             AdminestratorLabel.setVisible(false);
             MedarbejderLabel.setVisible(false);
             createCostumer1.setVisible(false);
@@ -220,7 +220,7 @@ public class FindBookingController extends LoginController implements Initializa
 
 
         } else if (msql.userType(user.getEmail()).equals("Employee")) {
-            System.out.println("Employee login complete"+" Mybooking");
+            System.out.println("Employee login complete"+" FindBooking");
             AdminestratorLabel.setVisible(false);
             editTreatment1.setVisible(false);
             deleteTreatment1.setVisible(false);
@@ -233,10 +233,10 @@ public class FindBookingController extends LoginController implements Initializa
 
 
         }else if (msql.userType(user.getEmail()).equals("Admin")) {
-            System.out.println("Admin login complete" + " Mybooking");
+            System.out.println("Admin login complete" + " FindBooking");
 
         }else{
-            System.out.println("ERROR IN: MyBooking");}
+            System.out.println("ERROR IN: FindBooking");}
 //_____________________________________________________________________________________________________________
 
         // Set dropdowns
