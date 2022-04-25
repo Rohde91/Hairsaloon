@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -34,22 +35,31 @@ public class MyBookingController implements Initializable {
     mysql msql = mysql.getInstance();
 
     @FXML
-    private Button createBooking;
+    private Button createBookingButton;
 
     @FXML
     private Button createcustomer;
 
     @FXML
-    private Button editBooking;
+    private Button myBooking;
 
     @FXML
-    private Button findBooking;
+    private Button editBookingButton;
+
+    @FXML
+    private Button findBookingButton;
 
     @FXML
     private Button findcustomer;
 
     @FXML
     private Button logoutButton;
+
+    @FXML
+    private AnchorPane myBookingAncorpane;
+
+    @FXML
+    private Button myBookingButton;
 
     @FXML
     void createBookingScene(ActionEvent event) {
@@ -174,16 +184,23 @@ public class MyBookingController implements Initializable {
 
 
 
-    //@FXML
-    //private TableView<BookingDetails> customerBookingList;
 
     @FXML
     private TableView<BookingDetails> customerBookingList;
 
     private final ObservableList<BookingDetails> data =
             FXCollections.observableArrayList(
-              msql.getMyBooking(customerBookingList)
-              //Kald BookingDetails her...
+                    msql.getMyBooking(customerBookingList)
+
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+
             );
 
 
@@ -230,9 +247,14 @@ public class MyBookingController implements Initializable {
         vbox.setPadding(new Insets(10,0,0,10));
         vbox.getChildren().addAll(label, customerBookingList);
 
+        //javafx.fxml.LoadException:
+        ///D:/Datamatiker/2nd%20semester/projekter/Hairsaloon/target/classes/com/groupwork/hairsaloon/MyBookingScene.fxml
+
+        //Cannot invoke "javafx.scene.Scene.getRoot()" because the return value of "javafx.scene.control.TableView.getScene()" is null
         ((Group) customerBookingList.getScene().getRoot()).getChildren().addAll(vbox);
 
     }
+
 
 }
 
