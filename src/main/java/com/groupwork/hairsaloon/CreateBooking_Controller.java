@@ -69,7 +69,7 @@ public class CreateBooking_Controller extends LoginController implements Initial
     private Button findBooking;
 
     @FXML
-    private Button findCostumer;
+    private Button findcustomer;
 
     @FXML
     private Button logoutButton;
@@ -95,7 +95,7 @@ public class CreateBooking_Controller extends LoginController implements Initial
     }
 
     @FXML
-    void createCostumerScene(ActionEvent event) {
+    void createcustomerScene(ActionEvent event) {
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateCustomer.fxml")));
@@ -152,12 +152,12 @@ public class CreateBooking_Controller extends LoginController implements Initial
     }
 
     @FXML
-    void editCostumerBookingScene(ActionEvent event) {
+    void editcustomerBookingScene(ActionEvent event) {
 
     }
 
     @FXML
-    void editCostumerScene(ActionEvent event) {
+    void editcustomerScene(ActionEvent event) {
 
     }
 
@@ -186,7 +186,7 @@ public class CreateBooking_Controller extends LoginController implements Initial
     }
 
     @FXML
-    void findCostumerScene(ActionEvent event) {
+    void findcustomerScene(ActionEvent event) {
 
     }
 
@@ -387,6 +387,7 @@ public class CreateBooking_Controller extends LoginController implements Initial
 
     //TODO Der skal sikkert sættes nogle variable her, til når en create booking funktion kaldes...
     @FXML
+
     void createBookingSlot(MouseEvent event) throws ParseException {
         System.out.println("test: you clicked on a time slot");
         //System.out.println(event.getSource());
@@ -434,7 +435,7 @@ public class CreateBooking_Controller extends LoginController implements Initial
         b.setFk_EmployeeID(selectedEmployeeID);
         b.setFk_TreatmentID(selectedTreatmentID);
         LoginController lc = new LoginController();
-        b.setFk_CostumerID(lc.user.getId());
+        b.setFk_customerID(lc.user.getId());
 
 
         msql.createBookingInSQL(b);

@@ -51,34 +51,34 @@ public class CreateCustomerController extends LoginController implements Initial
     private Button findBooking;
 
     @FXML
-    private TextField costumerAddressInput;
+    private TextField customerAddressInput;
 
     @FXML
-    private TextField costumerMailInput;
+    private TextField customerMailInput;
 
     @FXML
-    private TextField costumerNameInput;
+    private TextField customerNameInput;
 
     @FXML
-    private PasswordField costumerPasswordInput;
+    private PasswordField customerPasswordInput;
 
     @FXML
-    private TextField costumerPhoneInput;
+    private TextField customerPhoneInput;
 
     @FXML
     private Button createBooking;
 
     @FXML
-    private Button createCostumer;
+    private Button createcustomer;
 
     @FXML
-    private Button createCostumerInDatabase;
+    private Button createcustomerInDatabase;
 
     @FXML
     private Button editBooking;
 
     @FXML
-    private Button findCostumer;
+    private Button findcustomer;
 
     @FXML
     private Button logoutButton;
@@ -98,22 +98,22 @@ public class CreateCustomerController extends LoginController implements Initial
     }
 
     @FXML
-    void createCostumerButtonAction(ActionEvent event) {
-        String name = costumerNameInput.getText();
-        String email = costumerMailInput.getText();
-        String phone = costumerPhoneInput.getText();
-        String address = costumerAddressInput.getText();
-        String password = costumerPasswordInput.getText();
+    void createcustomerButtonAction(ActionEvent event) {
+        String name = customerNameInput.getText();
+        String email = customerMailInput.getText();
+        String phone = customerPhoneInput.getText();
+        String address = customerAddressInput.getText();
+        String password = customerPasswordInput.getText();
         msql.createNewCustomer(name, email, phone, address, password);
-        costumerNameInput.setText(null);
-        costumerMailInput.setText(null);
-        costumerPhoneInput.setText(null);
-        costumerAddressInput.setText(null);
-        costumerPasswordInput.setText(null);
+        customerNameInput.setText(null);
+        customerMailInput.setText(null);
+        customerPhoneInput.setText(null);
+        customerAddressInput.setText(null);
+        customerPasswordInput.setText(null);
     }
 
     @FXML
-    void createCostumerScene(ActionEvent event) {
+    void createcustomerScene(ActionEvent event) {
 
     }
 
@@ -161,12 +161,12 @@ public class CreateCustomerController extends LoginController implements Initial
     }
 
     @FXML
-    void editCostumerBookingScene(ActionEvent event) {
+    void editcustomerBookingScene(ActionEvent event) {
 
     }
 
     @FXML
-    void editCostumerScene(ActionEvent event) {
+    void editcustomerScene(ActionEvent event) {
 
     }
 
@@ -195,7 +195,7 @@ public class CreateCustomerController extends LoginController implements Initial
     }
 
     @FXML
-    void findCostumerScene(ActionEvent event) {
+    void findcustomerScene(ActionEvent event) {
 
     }
 
