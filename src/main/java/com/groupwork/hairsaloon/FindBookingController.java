@@ -63,7 +63,7 @@ public class FindBookingController extends LoginController implements Initializa
     private Button editBooking;
 
     @FXML
-    private Button findCostumer;
+    private Button findcustomer;
 
     @FXML
     private Button logoutButton;
@@ -71,7 +71,7 @@ public class FindBookingController extends LoginController implements Initializa
 
 
     @FXML
-    private TableView<?> costumerBookingList;
+    private TableView<?> customerBookingList;
 
     @FXML
     private ChoiceBox<?> ChoiceBoxFrisør;
@@ -79,7 +79,7 @@ public class FindBookingController extends LoginController implements Initializa
     private ChoiceBox<?> ChoiceBoxPhone;
 
     @FXML
-    void costumerBookingList(ActionEvent event) {
+    void customerBookingList(ActionEvent event) {
 
 
 
@@ -101,7 +101,7 @@ public class FindBookingController extends LoginController implements Initializa
     }
 
     @FXML
-    void createCostumerScene(ActionEvent event) {
+    void createcustomerScene(ActionEvent event) {
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateCustomer.fxml")));
@@ -158,12 +158,12 @@ public class FindBookingController extends LoginController implements Initializa
     }
 
     @FXML
-    void editCostumerBookingScene(ActionEvent event) {
+    void editcustomerBookingScene(ActionEvent event) {
 
     }
 
     @FXML
-    void editCostumerScene(ActionEvent event) {
+    void editcustomerScene(ActionEvent event) {
 
     }
 
@@ -183,7 +183,7 @@ public class FindBookingController extends LoginController implements Initializa
     }
 
     @FXML
-    void findCostumerScene(ActionEvent event) {
+    void findcustomerScene(ActionEvent event) {
 
     }
 
@@ -216,7 +216,7 @@ public class FindBookingController extends LoginController implements Initializa
         }
     }
 
-
+    //TODO explain what this is
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //__________________________________________________________________________________________________________________
@@ -268,6 +268,7 @@ public class FindBookingController extends LoginController implements Initializa
 
         //System.out.println(ChoiceBoxFrisør.getValue());
         choiceBoxEmployees.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
                 if (choiceBoxEmployees.getItems().get((Integer) number2) != null) {

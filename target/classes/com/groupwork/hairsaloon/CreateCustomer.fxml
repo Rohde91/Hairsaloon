@@ -21,6 +21,8 @@
                   <Image url="@../../../../../../png-transparent-letter-m-others.png" />
                </image>
             </ImageView>
+            //findcostumer and createcustomer namechange to -||-1
+
             <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
             <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
             <Button fx:id="findCostumer1" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
@@ -82,12 +84,12 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="costumerNameInput" layoutX="215.0" layoutY="130.0" />
-            <TextField fx:id="costumerMailInput" layoutX="215.0" layoutY="165.0" />
-            <TextField fx:id="costumerPhoneInput" layoutX="215.0" layoutY="200.0" />
-            <TextField fx:id="costumerAddressInput" layoutX="215.0" layoutY="235.0" />
-            <PasswordField fx:id="costumerPasswordInput" layoutX="215.0" layoutY="270.0" />
-            <Button fx:id="createCostumerInDatabase" layoutX="268.0" layoutY="320.0" mnemonicParsing="false" onAction="#createCostumerButtonAction" text="Opret kunde">
+            <TextField fx:id="customerNameInput" layoutX="215.0" layoutY="130.0" />
+            <TextField fx:id="customerMailInput" layoutX="215.0" layoutY="165.0" />
+            <TextField fx:id="customerPhoneInput" layoutX="215.0" layoutY="200.0" />
+            <TextField fx:id="customerAddressInput" layoutX="215.0" layoutY="235.0" />
+            <PasswordField fx:id="customerPasswordInput" layoutX="215.0" layoutY="270.0" />
+            <Button fx:id="createcustomerInDatabase" layoutX="268.0" layoutY="320.0" mnemonicParsing="false" onAction="#createcustomerButtonAction" text="Opret kunde">
                <font>
                   <Font size="14.0" />
                </font>

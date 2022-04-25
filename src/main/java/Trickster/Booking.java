@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Booking {
 
-    private int bookingID, fk_CostumerID;
+    private int bookingID, fk_CustomerID;
     private Time time;
     private Date date;
     private LocalDate ldate;
@@ -15,15 +15,15 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(int fk_CostumerID, Time time, Date date, int fk_TreatmentID, int fk_EmployeeID) {
-        this.fk_CostumerID = fk_CostumerID;
+    public Booking(int fk_customerID, Time time, Date date, int fk_TreatmentID, int fk_EmployeeID) {
+        this.fk_CustomerID = fk_customerID;
         this.time = time;
         this.date = date;
         this.fk_TreatmentID = fk_TreatmentID;
         this.fk_EmployeeID = fk_EmployeeID;
     }
-    public Booking(int fk_CostumerID, Time time, LocalDate ldate, int fk_TreatmentID, int fk_EmployeeID) {
-        this.fk_CostumerID = fk_CostumerID;
+    public Booking(int fk_customerID, Time time, LocalDate ldate, int fk_TreatmentID, int fk_EmployeeID) {
+        this.fk_CustomerID = fk_customerID;
         this.time = time;
         this.ldate = ldate;
         this.fk_TreatmentID = fk_TreatmentID;
@@ -46,12 +46,12 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public int getFk_CostumerID() {
-        return fk_CostumerID;
+    public int getFk_customerID() {
+        return fk_CustomerID;
     }
 
-    public void setFk_CostumerID(int fk_CostumerID) {
-        this.fk_CostumerID = fk_CostumerID;
+    public void setFk_customerID(int fk_customerID) {
+        this.fk_CustomerID = fk_customerID;
     }
 
     public Time getTime() {
@@ -90,7 +90,7 @@ public class Booking {
     public String toString() {
         return "Booking{" +
                 "bookingID=" + bookingID +
-                ", fk_CostumerID=" + fk_CostumerID +
+                ", fk_customerID=" + fk_CustomerID +
                 ", time=" + time +
                 ", date=" + date +
                 ", fk_TreatmentID=" + fk_TreatmentID +

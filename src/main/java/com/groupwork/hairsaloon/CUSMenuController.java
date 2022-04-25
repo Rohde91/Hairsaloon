@@ -1,6 +1,9 @@
 package com.groupwork.hairsaloon;
 //com.groupwork.hairsaloon.MenuController
 import Trickster.mysql;
+import Trickster.Booking;
+import Trickster.Customer;
+import Trickster.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +30,7 @@ public class CUSMenuController extends LoginController implements Initializable 
     private Button editBooking;
 
     @FXML
-    private Button findCostumer;
+    private Button findcustomer;
 
     @FXML
     private Button logoutButton;
@@ -49,7 +52,7 @@ public class CUSMenuController extends LoginController implements Initializable 
     }
 
     @FXML
-    void createCostumerScene(ActionEvent event) {
+    void createcustomerScene(ActionEvent event) {
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateCustomer.fxml")));
@@ -106,12 +109,12 @@ public class CUSMenuController extends LoginController implements Initializable 
     }
 
     @FXML
-    void editCostumerBookingScene(ActionEvent event) {
+    void editcustomerBookingScene(ActionEvent event) {
 
     }
 
     @FXML
-    void editCostumerScene(ActionEvent event) {
+    void editcustomerScene(ActionEvent event) {
 
     }
 
@@ -141,7 +144,7 @@ public class CUSMenuController extends LoginController implements Initializable 
 
 
     @FXML
-    void findCostumerScene(ActionEvent event) {
+    void findcustomerScene(ActionEvent event) {
 
     }
 
@@ -196,4 +199,5 @@ public class CUSMenuController extends LoginController implements Initializable 
         }else{
             System.out.println("ERROR IN: MyBooking");}
     }
+
 }

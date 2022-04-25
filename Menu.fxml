@@ -23,9 +23,9 @@
             <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" minWidth="120.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
             <Button fx:id="findCostumer1" layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
             <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
-            <Button fx:id="editCostumerBooking1" layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false" onAction="#editCostumerBookingScene" text="Ret aftaler" />
-            <Button fx:id="createCostumer1" layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false" onAction="#createCostumerScene" text="Opret kunde" />
-            <Button fx:id="editCostumer1" layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false" onAction="#editCostumerScene" text="Ret kunde" />
+            <Button fx:id="editCostumerBooking1" layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false" onAction="#editcustomerBookingScene" text="Ret aftaler" />
+            <Button fx:id="createCostumer1" layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false" onAction="#createcustomerScene" text="Opret kunde" />
+            <Button fx:id="editCostumer1" layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false" onAction="#editcustomerScene" text="Ret kunde" />
             <Button layoutX="10.0" layoutY="193.0" minWidth="120.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
             <Label fx:id="AdminestratorLabel" layoutX="10.0" layoutY="423.0" text="Adminestrator">
                <font>
