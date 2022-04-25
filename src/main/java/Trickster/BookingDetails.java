@@ -1,5 +1,7 @@
 package Trickster;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.sql.Time;
 import java.util.Date;
 
@@ -7,7 +9,7 @@ public class BookingDetails {
 
     private int bookingID;
 
-    private int fk_CostumerID;
+    private int fk_customerID;
     private String customerName;
     private String customerEmail;
     private String customerPhone;
@@ -29,12 +31,102 @@ public class BookingDetails {
     private String employeePhone;
     private String employeePassword;
 
+    //SimpleStringProperties:
+
+    private SimpleStringProperty simple_time;
+    private SimpleStringProperty simple_date;
+    private SimpleStringProperty simple_employeeName;
+    private SimpleStringProperty simple_treatmentName;
+    private SimpleStringProperty simple_treatmentDuration;
+    private SimpleStringProperty simple_treatmentPrice;
+
+    public BookingDetails(SimpleStringProperty simple_time, SimpleStringProperty simple_date, SimpleStringProperty simple_employeeName, SimpleStringProperty simple_treatmentName, SimpleStringProperty simple_treatmentDuration, SimpleStringProperty simple_treatmentPrice) {
+        this.simple_time = simple_time;
+        this.simple_date = simple_date;
+        this.simple_employeeName = simple_employeeName;
+        this.simple_treatmentName = simple_treatmentName;
+        this.simple_treatmentDuration = simple_treatmentDuration;
+        this.simple_treatmentPrice = simple_treatmentPrice;
+    }
+
+    public String getSimple_time() {
+        return simple_time.get();
+    }
+
+    public SimpleStringProperty simple_timeProperty() {
+        return simple_time;
+    }
+
+    public void setSimple_time(String simple_time) {
+        this.simple_time.set(simple_time);
+    }
+
+    public String getSimple_date() {
+        return simple_date.get();
+    }
+
+    public SimpleStringProperty simple_dateProperty() {
+        return simple_date;
+    }
+
+    public void setSimple_date(String simple_date) {
+        this.simple_date.set(simple_date);
+    }
+
+    public String getSimple_employeeName() {
+        return simple_employeeName.get();
+    }
+
+    public SimpleStringProperty simple_employeeNameProperty() {
+        return simple_employeeName;
+    }
+
+    public void setSimple_employeeName(String simple_employeeName) {
+        this.simple_employeeName.set(simple_employeeName);
+    }
+
+    public String getSimple_treatmentName() {
+        return simple_treatmentName.get();
+    }
+
+    public SimpleStringProperty simple_treatmentNameProperty() {
+        return simple_treatmentName;
+    }
+
+    public void setSimple_treatmentName(String simple_treatmentName) {
+        this.simple_treatmentName.set(simple_treatmentName);
+    }
+
+    public String getSimple_treatmentDuration() {
+        return simple_treatmentDuration.get();
+    }
+
+    public SimpleStringProperty simple_treatmentDurationProperty() {
+        return simple_treatmentDuration;
+    }
+
+    public void setSimple_treatmentDuration(String simple_treatmentDuration) {
+        this.simple_treatmentDuration.set(simple_treatmentDuration);
+    }
+
+    public String getSimple_treatmentPrice() {
+        return simple_treatmentPrice.get();
+    }
+
+    public SimpleStringProperty simple_treatmentPriceProperty() {
+        return simple_treatmentPrice;
+    }
+
+    public void setSimple_treatmentPrice(String simple_treatmentPrice) {
+        this.simple_treatmentPrice.set(simple_treatmentPrice);
+    }
+
     public BookingDetails() {
     }
 
-    public BookingDetails(int bookingID, int fk_CostumerID, String customerName, String customerEmail, String customerPhone, String customerAddress, String customerPassword, Time time, Date date, int fk_TreatmentID, String treatmentName, String treatmentPrice, String treatmentDuration, int fk_EmployeeID, String employeeName, String employeeEmail, String employeeAddress, String employeePhone, String employeePassword) {
+    public BookingDetails(int bookingID, int fk_customerID, String customerName, String customerEmail, String customerPhone, String customerAddress, String customerPassword, Time time, Date date, int fk_TreatmentID, String treatmentName, String treatmentPrice, String treatmentDuration, int fk_EmployeeID, String employeeName, String employeeEmail, String employeeAddress, String employeePhone, String employeePassword) {
         this.bookingID = bookingID;
-        this.fk_CostumerID = fk_CostumerID;
+        this.fk_customerID = fk_customerID;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.customerPhone = customerPhone;
@@ -54,6 +146,15 @@ public class BookingDetails {
         this.employeePassword = employeePassword;
     }
 
+    public BookingDetails(Time time, Date date, String treatmentName, String treatmentPrice, String treatmentDuration, String employeeName) {
+        this.time = time;
+        this.date = date;
+        this.treatmentName = treatmentName;
+        this.treatmentPrice = treatmentPrice;
+        this.treatmentDuration = treatmentDuration;
+        this.employeeName = employeeName;
+    }
+
     public int getBookingID() {
         return bookingID;
     }
@@ -62,12 +163,12 @@ public class BookingDetails {
         this.bookingID = bookingID;
     }
 
-    public int getFk_CostumerID() {
-        return fk_CostumerID;
+    public int getFk_customerID() {
+        return fk_customerID;
     }
 
-    public void setFk_CostumerID(int fk_CostumerID) {
-        this.fk_CostumerID = fk_CostumerID;
+    public void setFk_customerID(int fk_customerID) {
+        this.fk_customerID = fk_customerID;
     }
 
     public String getCustomerName() {

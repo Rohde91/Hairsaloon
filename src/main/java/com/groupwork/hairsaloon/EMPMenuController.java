@@ -27,7 +27,7 @@ public class EMPMenuController implements Initializable {
     private Button findBooking;
 
     @FXML
-    private Button findCostumer;
+    private Button findcustomer;
 
     @FXML
     private Button logoutButton;
@@ -47,7 +47,7 @@ public class EMPMenuController implements Initializable {
     }
 
     @FXML
-    void createCostumerScene(ActionEvent event) {
+    void createcustomerScene(ActionEvent event) {
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateCustomer.fxml")));
@@ -86,12 +86,12 @@ public class EMPMenuController implements Initializable {
     }
 
     @FXML
-    void editCostumerBookingScene(ActionEvent event) {
+    void editcustomerBookingScene(ActionEvent event) {
 
     }
 
     @FXML
-    void editCostumerScene(ActionEvent event) {
+    void editcustomerScene(ActionEvent event) {
 
     }
 
@@ -120,7 +120,7 @@ public class EMPMenuController implements Initializable {
     }
 
     @FXML
-    void findCostumerScene(ActionEvent event) {
+    void findcustomerScene(ActionEvent event) {
 
     }
 

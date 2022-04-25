@@ -47,12 +47,12 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="costumerNameInput" layoutX="487.0" layoutY="200.0" />
-            <TextField fx:id="costumerMailInput" layoutX="487.0" layoutY="235.0" />
-            <TextField fx:id="costumerPhoneInput" layoutX="487.0" layoutY="270.0" />
-            <TextField fx:id="costumerAddressInput" layoutX="487.0" layoutY="305.0" />
-            <PasswordField fx:id="costumerPasswordInput" layoutX="487.0" layoutY="340.0" />
-            <Button fx:id="createCostumerInDatabase" layoutX="437.0" layoutY="402.0" mnemonicParsing="false" onAction="#createCostumerButtonAction" text="Opret profil">
+            <TextField fx:id="customerNameInput" layoutX="487.0" layoutY="200.0" />
+            <TextField fx:id="customerMailInput" layoutX="487.0" layoutY="235.0" />
+            <TextField fx:id="customerPhoneInput" layoutX="487.0" layoutY="270.0" />
+            <TextField fx:id="customerAddressInput" layoutX="487.0" layoutY="305.0" />
+            <PasswordField fx:id="customerPasswordInput" layoutX="487.0" layoutY="340.0" />
+            <Button fx:id="createcustomerInDatabase" layoutX="437.0" layoutY="402.0" mnemonicParsing="false" onAction="#createcustomerButtonAction" text="Opret profil">
                <font>
                   <Font size="14.0" />
                </font>

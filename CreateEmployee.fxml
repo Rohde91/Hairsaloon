@@ -23,11 +23,11 @@
             </ImageView>
             <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
             <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
-            <Button fx:id="findCostumer" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
+            <Button fx:id="findcustomer" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#findcustomerScene" text="Find kunde" />
             <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
-            <Button layoutX="10.0" layoutY="347.0" mnemonicParsing="false" onAction="#editCostumerBookingScene" text="Ret aftaler" />
-            <Button fx:id="createCostumer" layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#createCostumerScene" text="Opret kunde" />
-            <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" onAction="#editCostumerScene" text="Ret kunde" />
+            <Button layoutX="10.0" layoutY="347.0" mnemonicParsing="false" onAction="#editcustomerBookingScene" text="Ret aftaler" />
+            <Button fx:id="createcustomer" layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#createcustomerScene" text="Opret kunde" />
+            <Button layoutX="10.0" layoutY="372.0" mnemonicParsing="false" onAction="#editcustomerScene" text="Ret kunde" />
             <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
             <Label layoutX="10.0" layoutY="423.0" text="Adminestrator">
                <font>
@@ -82,12 +82,12 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="costumerNameInput" layoutX="215.0" layoutY="130.0" />
-            <TextField fx:id="costumerMailInput" layoutX="215.0" layoutY="165.0" />
-            <TextField fx:id="costumerPhoneInput" layoutX="215.0" layoutY="200.0" />
-            <TextField fx:id="costumerAddressInput" layoutX="215.0" layoutY="235.0" />
-            <PasswordField fx:id="costumerPasswordInput" layoutX="215.0" layoutY="270.0" />
-            <Button fx:id="createCostumerInDatabase" layoutX="274.0" layoutY="320.0" mnemonicParsing="false" onAction="#createCostumerButtonAction" text="Opret frisør">
+            <TextField fx:id="customerNameInput" layoutX="215.0" layoutY="130.0" />
+            <TextField fx:id="customerMailInput" layoutX="215.0" layoutY="165.0" />
+            <TextField fx:id="customerPhoneInput" layoutX="215.0" layoutY="200.0" />
+            <TextField fx:id="customerAddressInput" layoutX="215.0" layoutY="235.0" />
+            <PasswordField fx:id="customerPasswordInput" layoutX="215.0" layoutY="270.0" />
+            <Button fx:id="createcustomerInDatabase" layoutX="274.0" layoutY="320.0" mnemonicParsing="false" onAction="#createcustomerButtonAction" text="Opret frisør">
                <font>
                   <Font size="14.0" />
                </font>

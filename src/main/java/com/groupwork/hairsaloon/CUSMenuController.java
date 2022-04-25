@@ -1,5 +1,8 @@
 package com.groupwork.hairsaloon;
 //com.groupwork.hairsaloon.MenuController
+import Trickster.Booking;
+import Trickster.Customer;
+import Trickster.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +18,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class CUSMenuController implements Initializable {
+public class CUSMenuController  {
     //Customer Controller
     @FXML
     private Button createBooking;
@@ -27,7 +30,7 @@ public class CUSMenuController implements Initializable {
     private Button findBooking;
 
     @FXML
-    private Button findCostumer;
+    private Button findcustomer;
 
     @FXML
     private Button logoutButton;
@@ -49,7 +52,7 @@ public class CUSMenuController implements Initializable {
     }
 
     @FXML
-    void createCostumerScene(ActionEvent event) {
+    void createcustomerScene(ActionEvent event) {
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateCustomer.fxml")));
@@ -88,12 +91,12 @@ public class CUSMenuController implements Initializable {
     }
 
     @FXML
-    void editCostumerBookingScene(ActionEvent event) {
+    void editcustomerBookingScene(ActionEvent event) {
 
     }
 
     @FXML
-    void editCostumerScene(ActionEvent event) {
+    void editcustomerScene(ActionEvent event) {
 
     }
 
@@ -123,7 +126,7 @@ public class CUSMenuController implements Initializable {
 
 
     @FXML
-    void findCostumerScene(ActionEvent event) {
+    void findcustomerScene(ActionEvent event) {
 
     }
 
@@ -157,8 +160,8 @@ public class CUSMenuController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void loadBookings (Customer customer, Booking booking){
 
     }
+
 }
