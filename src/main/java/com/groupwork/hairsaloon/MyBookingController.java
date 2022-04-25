@@ -195,7 +195,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+//------------------------------------------------------------------------------------------------------------
         if (msql.userType(user.getEmail()).equals("Customer")) {
             System.out.println("Customer login complete"+" Mybooking");
             AdminestratorLabel.setVisible(false);
@@ -231,7 +231,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
         }else
             System.out.println("ERROR IN: MyBooking");
-
+//------------------------------------------------------------------------------------------------------------
     }
 
     }
