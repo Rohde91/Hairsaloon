@@ -1,5 +1,6 @@
 package com.groupwork.hairsaloon;
 //com.groupwork.hairsaloon.MenuController
+import Trickster.mysql;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,16 +16,15 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class CUSMenuController implements Initializable {
+public class CUSMenuController extends LoginController implements Initializable {
     //Customer Controller
+@FXML
+    private Button findBooking;
     @FXML
     private Button createBooking;
 
     @FXML
     private Button editBooking;
-
-    @FXML
-    private Button findBooking;
 
     @FXML
     private Button findCostumer;
@@ -159,6 +159,23 @@ public class CUSMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        mysql msql = mysql.getInstance();
+        if (msql.userType(user.getEmail()).equals("Customer")) {
+            System.out.println("Customer login complete"+" Mybooking");
+            findBooking.setVisible(false);
 
+
+        } else if (msql.userType(user.getEmail()).equals("Employee")) {
+            System.out.println("Employee login complete"+" Mybooking");
+
+
+
+
+
+        }else if (msql.userType(user.getEmail()).equals("Admin")) {
+            System.out.println("Admin login complete" + " Mybooking");
+
+        }else{
+            System.out.println("ERROR IN: MyBooking");}
     }
 }

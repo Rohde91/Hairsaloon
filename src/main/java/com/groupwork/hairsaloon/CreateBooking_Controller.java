@@ -37,7 +37,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;
 
-public class CreateBooking_Controller implements Initializable {
+public class CreateBooking_Controller extends LoginController implements Initializable {
     mysql msql = mysql.getInstance();
     String treatmentName = "";
 
@@ -204,6 +204,25 @@ public class CreateBooking_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        if (msql.userType(user.getEmail()).equals("Customer")) {
+            System.out.println("Customer login complete"+" Mybooking");
+            findBooking.setVisible(false);
+
+
+        } else if (msql.userType(user.getEmail()).equals("Employee")) {
+            System.out.println("Employee login complete"+" Mybooking");
+
+
+
+
+
+        }else if (msql.userType(user.getEmail()).equals("Admin")) {
+            System.out.println("Admin login complete" + " Mybooking");
+
+        }else{
+            System.out.println("ERROR IN: MyBooking");}
+//__________________________________________________________________________________________________________
         //CalenderFunctions.chooseDate();
         CalenderFunctions.getAllDaysOfTheWeek(20, Locale.ENGLISH).forEach(System.out::println);
         //TODO Giv chooseStylist og chooseStylist1 bedre navne. FX "chooseEmpList" og "chooseTreatmentList"
