@@ -21,6 +21,7 @@ public class LoginController {
     //TODO rename to loggedInUser:
     public static User user;
 
+
     @FXML
     private Label WrongTextLabel;
 
