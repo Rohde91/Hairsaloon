@@ -205,7 +205,34 @@ public class mysql {
         }
     }
     //---------------------------------------------------------------------------------------------------------------
+    public void createNewEmployee(String name, String email, String phone, String address, String password){
 
+        try {
+            PreparedStatement addToEmployeeTable = connection.
+                    prepareStatement("INSERT INTO Employee(Name,Email,Address,Phone) VALUES " +
+                            "('" + name
+                            + "', '" + email
+                            + "', '" + address
+                            + "', '" + phone
+                            + "')");
+
+            addToEmployeeTable.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            PreparedStatement addToPasswordTable = connection.
+                    prepareStatement("INSERT INTO PasswordTable(Email,Password,Type) VALUES " +
+                            "('" + email
+                            + "', '" + password
+                            + "', '" + "Employee"
+                            + "')");
+            addToPasswordTable.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //---------------------------------------------------------------------------------------------------------------
     //nice to have
     /*public void deleteUser() {
         try {
