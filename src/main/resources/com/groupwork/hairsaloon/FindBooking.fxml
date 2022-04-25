@@ -24,24 +24,24 @@
             </ImageView>
             <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" minWidth="120.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
             <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" minWidth="120.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
-            <Button fx:id="findCostumer" layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
+            <Button fx:id="findCostumer1" layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
             <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
-            <Button layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false" onAction="#editCostumerBookingScene" text="Ret aftaler" />
-            <Button layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false" onAction="#createCostumerScene" text="Opret kunde" />
-            <Button layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false" onAction="#editCostumerScene" text="Ret kunde" />
+            <Button fx:id="editCostumerBooking1" layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false" onAction="#editCostumerBookingScene" text="Ret aftaler" />
+            <Button fx:id="createCostumer1" layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false" onAction="#createCostumerScene" text="Opret kunde" />
+            <Button fx:id="editCostumer1" layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false" onAction="#editCostumerScene" text="Ret kunde" />
             <Button layoutX="10.0" layoutY="193.0" minWidth="120.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
-            <Label layoutX="10.0" layoutY="423.0" text="Adminestrator">
+            <Label fx:id="Adminestrator" layoutX="10.0" layoutY="423.0" text="Adminestrator">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="10.0" layoutY="450.0" minWidth="120.0" mnemonicParsing="false" onAction="#editTreatment" text="Ret behandling" />
-            <Button layoutX="10.0" layoutY="475.0" minWidth="120.0" mnemonicParsing="false" onAction="#deleteTreatment" text="Slet behandling" />
-            <Button layoutX="10.0" layoutY="500.0" minWidth="120.0" mnemonicParsing="false" onAction="#createTreatment" text="Opret behandling" />
-            <Button layoutX="10.0" layoutY="525.0" minWidth="120.0" mnemonicParsing="false" onAction="#createNewEmployee" text="Opret medarbejder" />
-            <Button layoutX="10.0" layoutY="550.0" minWidth="120.0" mnemonicParsing="false" onAction="#editEmployee" text="Ret medarbejder" />
-            <Button layoutX="10.0" layoutY="575.0" minWidth="120.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Slet medarbejder" />
-            <Label layoutX="10.0" layoutY="270.0" text="Medarbejder">
+            <Button fx:id="editTreatment1" layoutX="10.0" layoutY="450.0" minWidth="120.0" mnemonicParsing="false" onAction="#editTreatment" text="Ret behandling" />
+            <Button fx:id="deleteTreatment1" layoutX="10.0" layoutY="475.0" minWidth="120.0" mnemonicParsing="false" onAction="#deleteTreatment" text="Slet behandling" />
+            <Button fx:id="createTreatment1" layoutX="10.0" layoutY="500.0" minWidth="120.0" mnemonicParsing="false" onAction="#createTreatment" text="Opret behandling" />
+            <Button fx:id="createNewEmployee1" layoutX="10.0" layoutY="525.0" minWidth="120.0" mnemonicParsing="false" onAction="#createNewEmployee" text="Opret medarbejder" />
+            <Button fx:id="de" layoutX="10.0" layoutY="550.0" minWidth="120.0" mnemonicParsing="false" onAction="#editEmployee" text="Ret medarbejder" />
+            <Button fx:id="deleteEmployee1" layoutX="10.0" layoutY="575.0" minWidth="120.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Slet medarbejder" />
+            <Label fx:id="Medarbejder" layoutX="10.0" layoutY="270.0" text="Medarbejder">
                <font>
                   <Font size="18.0" />
                </font>
