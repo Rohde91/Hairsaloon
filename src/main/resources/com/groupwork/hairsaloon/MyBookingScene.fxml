@@ -22,13 +22,13 @@
 
             </ImageView>
             <Button fx:id="createBookingButton" layoutX="10.0" layoutY="118.0" minWidth="120.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
-            <Button fx:id="findBookingButton"   layoutX="10.0" layoutY="168.0" minWidth="120.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
-            <Button fx:id="findcustomer"        layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false" onAction="#findcustomerScene" text="Find kunde" />
-            <Button fx:id="editBookingButton"   layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
-            <Button                             layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false" onAction="#editcustomerBookingScene" text="Ret aftaler" />
-            <Button fx:id="createcustomer"      layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false" onAction="#createcustomerScene" text="Opret kunde" />
-            <Button                             layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false" onAction="#editcustomerScene" text="Ret kunde" />
-            <Button fx:id="myBookingButton"     layoutX="10.0" layoutY="193.0" minWidth="120.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
+            <Button fx:id="findBookingButton" layoutX="10.0" layoutY="168.0" minWidth="120.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
+            <Button fx:id="findcustomer" layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false" onAction="#findcustomerScene" text="Find kunde" />
+            <Button fx:id="editBookingButton" layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
+            <Button layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false" onAction="#editcustomerBookingScene" text="Ret aftaler" />
+            <Button fx:id="createcustomer" layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false" onAction="#createcustomerScene" text="Opret kunde" />
+            <Button layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false" onAction="#editcustomerScene" text="Ret kunde" />
+            <Button fx:id="myBookingButton" layoutX="10.0" layoutY="193.0" minWidth="120.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
 
             <Label layoutX="10.0" layoutY="423.0" text="Adminestrator">
                <font>

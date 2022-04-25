@@ -31,7 +31,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class MyBookingController implements Initializable {
+public class MyBookingController implements Initializable{
     mysql msql = mysql.getInstance();
 
     @FXML
@@ -39,9 +39,6 @@ public class MyBookingController implements Initializable {
 
     @FXML
     private Button createcustomer;
-
-    @FXML
-    private Button myBooking;
 
     @FXML
     private Button editBookingButton;
@@ -153,6 +150,7 @@ public class MyBookingController implements Initializable {
 
     }
 
+    //get overwritten in in initialize method - not sure where or how
     @FXML
     void myBookingScene(ActionEvent event) {
         Parent root = null;
@@ -211,6 +209,14 @@ public class MyBookingController implements Initializable {
 
         label.setFont(new Font("Arial", 20));
 
+
+
+
+
+
+        //TODO
+        //Throw all of this into its own method in sql and call it in initialize
+        //also just use setters and getters where ever necessary
         customerBookingList.setEditable(true);
 
         TableColumn column_Date = new TableColumn("Dato");
@@ -251,6 +257,7 @@ public class MyBookingController implements Initializable {
         ///D:/Datamatiker/2nd%20semester/projekter/Hairsaloon/target/classes/com/groupwork/hairsaloon/MyBookingScene.fxml
 
         //Cannot invoke "javafx.scene.Scene.getRoot()" because the return value of "javafx.scene.control.TableView.getScene()" is null
+                // TODO this is not a scene thats why it fails
         ((Group) customerBookingList.getScene().getRoot()).getChildren().addAll(vbox);
 
     }

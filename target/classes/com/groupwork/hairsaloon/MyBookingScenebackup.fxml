@@ -19,42 +19,37 @@
                <image>
                   <Image url="@../../../../../../png-transparent-letter-m-others.png" />
                </image>
-
             </ImageView>
-            <Button fx:id="createBookingButton" layoutX="10.0" layoutY="118.0" minWidth="120.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
-            <Button fx:id="findBookingButton" layoutX="10.0" layoutY="168.0" minWidth="120.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
+            <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" minWidth="120.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
+            <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" minWidth="120.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
             <Button fx:id="findcustomer" layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false" onAction="#findcustomerScene" text="Find kunde" />
-            <Button fx:id="editBookingButton" layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
+            <Button fx:id="editBooking" layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
             <Button layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false" onAction="#editcustomerBookingScene" text="Ret aftaler" />
             <Button fx:id="createcustomer" layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false" onAction="#createcustomerScene" text="Opret kunde" />
             <Button layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false" onAction="#editcustomerScene" text="Ret kunde" />
-            <Button fx:id="myBookingButton" layoutX="10.0" layoutY="193.0" minWidth="120.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
-
+            <Button layoutX="10.0" layoutY="193.0" minWidth="120.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
             <Label layoutX="10.0" layoutY="423.0" text="Adminestrator">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-
             <Button layoutX="10.0" layoutY="450.0" minWidth="120.0" mnemonicParsing="false" onAction="#editTreatment" text="Ret behandling" />
             <Button layoutX="10.0" layoutY="475.0" minWidth="120.0" mnemonicParsing="false" onAction="#deleteTreatment" text="Slet behandling" />
             <Button layoutX="10.0" layoutY="500.0" minWidth="120.0" mnemonicParsing="false" onAction="#createTreatment" text="Opret behandling" />
             <Button layoutX="10.0" layoutY="525.0" minWidth="120.0" mnemonicParsing="false" onAction="#createNewEmployee" text="Opret medarbejder" />
             <Button layoutX="10.0" layoutY="550.0" minWidth="120.0" mnemonicParsing="false" onAction="#editEmployee" text="Ret medarbejder" />
             <Button layoutX="10.0" layoutY="575.0" minWidth="120.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Slet medarbejder" />
-
             <Label layoutX="10.0" layoutY="270.0" text="Medarbejder">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-
             <Button fx:id="logoutButton" layoutX="10.0" layoutY="662.0" minWidth="60.0" mnemonicParsing="false" onAction="#terminateSession" text="Log ud" />
          </children>
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane fx:id="myBookingAncorpane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="customerBookingList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="80.0" layoutY="48.0" text="Mine aftaler">
                <font>
