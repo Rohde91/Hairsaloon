@@ -6,7 +6,7 @@ Hårde krav:
 • Det skal være muligt at oprette og slette tidsbestillinger. - 50%
 • Det skal være muligt at slå tidsbestillinger op og rette i dem. - 20% 
 • Tidsbestillinger må ikke gå i konflikt – en medarbejder kan kun klippe en kunde ad gangen. - 50%
-• Tidsbestillingen skal indeholde behandling og hvor lang tid behandlingen tager. - 80%
+• Tidsbestillingen skal indeholde behandling og hvor lang tid behandlingen tager. - 90%
 • Systemet skal opbevare data struktureret og permanent. - 75%
 
 Tilføjelse:
@@ -72,3 +72,5 @@ Repository has bin made and code started to upload.
 Sprint 3:
 Calender has bin started and completed.
   The overlapping booking is still in the work.
+Creating a costumer is now possible from login screen. (may work?)
+Usecases has bin made for systemanalasys.
