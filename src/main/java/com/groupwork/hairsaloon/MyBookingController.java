@@ -34,49 +34,70 @@ public class MyBookingController extends LoginController implements Initializabl
     mysql msql = mysql.getInstance();
 
     @FXML
-    private Button deleteTreatment1;
-    @FXML
-    private Button createTreatment1;
-    @FXML
-    private Button createNewEmployee1;
-    @FXML
-    private Button editEmployee1;
-    @FXML
-    private Button deleteEmployee1;
-    @FXML
-    private Button editTreatment1;
-    @FXML
-    private Button editCostumerBooking1;
-    @FXML
     private Label AdminestratorLabel;
 
+    @FXML
+    private Label MedarbejderLabel;
+
+    @FXML
+    private TableColumn<?, ?> columnIDDate;
+
+    @FXML
+    private TableColumn<?, ?> columnIDEmp;
+
+    @FXML
+    private TableColumn<?, ?> columnIDPrice;
+
+    @FXML
+    private TableColumn<?, ?> columnIDTime;
+
+    @FXML
+    private TableColumn<?, ?> columnIDTreatmentDuration;
+
+    @FXML
+    private TableColumn<?, ?> columnIDTreatmet;
 
     @FXML
     private Button createBookingButton;
 
     @FXML
-    private Button createcustomer;
+    private Button createCostumer1;
 
-    private Button findCostumer1;
+    @FXML
+    private Button createNewEmployee1;
+
+    @FXML
+    private Button createTreatment1;
+
+    @FXML
+    private TableView <BookingDetails> customerBookingList;
+
+    @FXML
+    private Button deleteEmployee1;
+
+    @FXML
+    private Button deleteTreatment1;
+
     @FXML
     private Button editBookingButton;
 
     @FXML
+    private Button editCostumer1;
+
+    @FXML
+    private Button editCostumerBooking1;
+
+    @FXML
+    private Button editEmployee1;
+
+    @FXML
+    private Button editTreatment1;
+
+    @FXML
     private Button findBookingButton;
-    @FXML
-    private TableView<?> costumerBookingList;
 
     @FXML
-    private Button createBooking;
-
-
-    @FXML
-    private Button findcustomer;
-    private Button editBooking;
-
-
-
-
+    private Button findCostumer1;
 
     @FXML
     private Button logoutButton;
@@ -86,11 +107,6 @@ public class MyBookingController extends LoginController implements Initializabl
 
     @FXML
     private Button myBookingButton;
-
-    @FXML
-    void costumerBookingList(ActionEvent event) {
-
-    }
 
     @FXML
     void createBookingScene(ActionEvent event) {
@@ -205,6 +221,7 @@ public class MyBookingController extends LoginController implements Initializabl
     //get overwritten in in initialize method - not sure where or how
     @FXML
     void myBookingScene(ActionEvent event) {
+
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyBookingScene.fxml")));
@@ -235,8 +252,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
 
 
-    @FXML
-    private TableView <BookingDetails> customerBookingList;
+
 
     private final ObservableList<BookingDetails> data =
             FXCollections.observableArrayList(
@@ -257,19 +273,17 @@ public class MyBookingController extends LoginController implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-        TableColumn info = new TableColumn();
-        TableColumn date = new TableColumn();
-        TableColumn treatment = new TableColumn();
-        info.getColumns().addAll(date,treatment);
+        ObservableList<BookingDetails> listOfBookings = FXCollections.observableArrayList();
 
 
 
+
+        //todo make arraylist and catch it here
         msql.getMyBooking(customerBookingList);
 
 
 
-        final Label label = new Label("Mine aftaler");
+        /*final Label label = new Label("Mine aftaler");
 
         label.setFont(new Font("Arial", 20));
 
@@ -322,7 +336,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
         //Cannot invoke "javafx.scene.Scene.getRoot()" because the return value of "javafx.scene.control.TableView.getScene()" is null
                 // TODO this is not a scene that's why it fails
-        ((Group) customerBookingList.getScene().getRoot()).getChildren().addAll(vbox);
+        ((Group) customerBookingList.getScene().getRoot()).getChildren().addAll(vbox);*/
 
     }
 

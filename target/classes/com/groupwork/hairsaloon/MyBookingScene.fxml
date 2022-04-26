@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,11 +22,11 @@
             </ImageView>
             <Button fx:id="createBookingButton" layoutX="10.0" layoutY="118.0" minWidth="120.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
             <Button fx:id="findBookingButton" layoutX="10.0" layoutY="168.0" minWidth="120.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
-            <Button fx:id="findCostumer1" layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false"  text="Find kunde" />
+            <Button fx:id="findCostumer1" layoutX="10.0" layoutY="322.0" minWidth="120.0" mnemonicParsing="false" text="Find kunde" />
             <Button fx:id="editBookingButton" layoutX="10.0" layoutY="143.0" minWidth="120.0" mnemonicParsing="false" onAction="#editBookingScene" text="Ret aftale" />
-            <Button fx:id="editCostumerBooking1" layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false"  text="Ret aftaler" />
-            <Button fx:id="createCostumer1" layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false"  text="Opret kunde" />
-            <Button fx:id="editCostumer1" layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false"  text="Ret kunde" />
+            <Button fx:id="editCostumerBooking1" layoutX="10.0" layoutY="347.0" minWidth="120.0" mnemonicParsing="false" text="Ret aftaler" />
+            <Button fx:id="createCostumer1" layoutX="10.0" layoutY="297.0" minWidth="120.0" mnemonicParsing="false" text="Opret kunde" />
+            <Button fx:id="editCostumer1" layoutX="10.0" layoutY="372.0" minWidth="120.0" mnemonicParsing="false" text="Ret kunde" />
             <Button fx:id="myBookingButton" layoutX="10.0" layoutY="193.0" minWidth="120.0" mnemonicParsing="false" onAction="#myBookingScene" text="Mine aftaler" />
 
             <Label fx:id="AdminestratorLabel" layoutX="10.0" layoutY="423.0" text="Adminestrator">
@@ -61,7 +60,6 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="customerBookingList" layoutX="80.0" layoutY="139.0" prefHeight="423.0" prefWidth="600.0" />
          </children>
       </AnchorPane>
    </center>
