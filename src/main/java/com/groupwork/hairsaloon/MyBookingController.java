@@ -256,7 +256,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
     private final ObservableList<BookingDetails> data =
             FXCollections.observableArrayList(
-                    msql.getMyBooking(customerBookingList)
+                    //msql.getMyBooking(customerBookingList)
 
                     //Kald BookingDetails her...
                     //Kald BookingDetails her...
@@ -285,7 +285,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
 
         //todo make arraylist and catch it here
-        msql.getMyBooking(customerBookingList);
+        //msql.getMyBooking(customerBookingList);
 
 
 

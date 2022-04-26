@@ -652,14 +652,15 @@ public class mysql {
     //@FXML
     //private TableView<BookingDetails> tableview;
 
-    //makes an array of the users bookings and returns that
+    //makes an arraylist of the users bookings and returns that
     //todo make it an arraylist!
-    public BookingDetails[] getMyBooking (TableView tableview){
-        int i = 0;
+
+    public ArrayList<BookingDetails> getMyBooking (){
         LoginController LC = new LoginController();
         BookingDetails bookings = new BookingDetails();
-        //BookingDetails bookingArraylist<> = new BookingDetails()
-        BookingDetails bookingsArray[] = new BookingDetails[getMyBookingCount(tableview)];
+
+        ArrayList<BookingDetails> bookingArraylist = new ArrayList<>();
+
         try {
             Statement statement = connection.createStatement();
 
@@ -692,15 +693,13 @@ public class mysql {
 
                 System.out.println("");
 
-                bookingsArray[i] = bookings;
-                System.out.println(bookingsArray[i].getTime());
-                System.out.println(i);
-                i++;
+                bookingArraylist.add(bookings);
+                System.out.println("booking added");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return bookingsArray;
+        return bookingArraylist;
     }
 
     //counts the number of bookings from "today" and forward
