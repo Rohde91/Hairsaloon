@@ -55,8 +55,7 @@ public class MyBookingController extends LoginController implements Initializabl
     private Button editCostumerBooking1;
     @FXML
     private Label AdminestratorLabel;
-public class MyBookingController implements Initializable{
-    mysql msql = mysql.getInstance();
+
 
     @FXML
     private Button createBookingButton;
@@ -276,6 +275,7 @@ public class MyBookingController implements Initializable{
         //TODO
         //Throw all of this into its own method in sql and call it in initialize
         //also just use setters and getters where ever necessary
+
         customerBookingList.setEditable(true);
 
         TableColumn column_Date = new TableColumn("Dato");
@@ -321,9 +321,7 @@ public class MyBookingController implements Initializable{
 
     }
 
-
-}
-    @Override
+    /*@Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //------------------------------------------------------------------------------------------------------------
         if (msql.userType(user.getEmail()).equals("Customer")) {
@@ -362,7 +360,7 @@ public class MyBookingController implements Initializable{
         }else
             System.out.println("ERROR IN: MyBooking");
 //------------------------------------------------------------------------------------------------------------
-    }
+    }*/
 
     }
 
