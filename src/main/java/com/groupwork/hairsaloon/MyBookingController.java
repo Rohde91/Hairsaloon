@@ -1,5 +1,6 @@
 package com.groupwork.hairsaloon;
 
+
 import Trickster.mysql;
 import Trickster.BookingDetails;
 import javafx.collections.FXCollections;
@@ -26,13 +27,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MyBookingController extends LoginController implements Initializable {
     mysql msql = mysql.getInstance();
-
+    ArrayList<BookingDetails> bookings;
     @FXML
     private Label AdminestratorLabel;
 
@@ -40,22 +42,22 @@ public class MyBookingController extends LoginController implements Initializabl
     private Label MedarbejderLabel;
 
     @FXML
-    private TableColumn<?, ?> columnIDDate;
+    private TableColumn<BookingDetails, String> columnIDDate;
 
     @FXML
-    private TableColumn<?, ?> columnIDEmp;
+    private TableColumn<BookingDetails, String> columnIDEmp;
 
     @FXML
     private TableColumn<BookingDetails, String> columnIDPrice;
 
     @FXML
-    private TableColumn<?, ?> columnIDTime;
+    private TableColumn<BookingDetails, String> columnIDTime;
 
     @FXML
-    private TableColumn<?, ?> columnIDTreatmentDuration;
+    private TableColumn<BookingDetails, String> columnIDTreatmentDuration;
 
     @FXML
-    private TableColumn<?, ?> columnIDTreatmet;
+    private TableColumn<BookingDetails, String> columnIDTreatmet;
 
     @FXML
     private Button createBookingButton;
@@ -249,31 +251,23 @@ public class MyBookingController extends LoginController implements Initializabl
         }
     }
 
-
-
-
-
-
-    private final ObservableList<BookingDetails> data =
-            FXCollections.observableArrayList(
-                    msql.getMyBooking(customerBookingList)
-
-                    //Kald BookingDetails her...
-                    //Kald BookingDetails her...
-                    //Kald BookingDetails her...
-                    //Kald BookingDetails her...
-                    //Kald BookingDetails her...
-                    //Kald BookingDetails her...
-                    //Kald BookingDetails her...
-                    //Kald BookingDetails her...
-
-            );
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         ObservableList<BookingDetails> listOfBookingsToTable = FXCollections.observableArrayList();
+        bookings = msql.getMyBooking();
+        for (int i = 0; i < bookings.size(); i++) {
+            listOfBookingsToTable.add(bookings.get(i));
+            System.out.println(bookings.get(i).toString());
+        }
+        customerBookingList.setItems(listOfBookingsToTable);
+
+        columnIDDate.setCellValueFactory (new PropertyValueFactory <BookingDetails,String> ("date"));
+        columnIDEmp.setCellValueFactory (new PropertyValueFactory <BookingDetails,String> ("employeeName"));
+        columnIDTime.setCellValueFactory (new PropertyValueFactory <BookingDetails,String> ("time"));
+        columnIDTreatmentDuration.setCellValueFactory (new PropertyValueFactory <BookingDetails,String> ("treatmentDuration"));
+        columnIDTreatmet.setCellValueFactory (new PropertyValueFactory <BookingDetails,String> ("treatmentName"));
+        columnIDPrice.setCellValueFactory (new PropertyValueFactory <BookingDetails,String> ("treatmentPrice"));
         /*
         arraylist of bookings from getMyBooking
         for or while loop that sets the bookings into listOfBookingsToTable using -> table.setItems(items); -> customerBookingList.setItems(listOfBookingsToTable);
@@ -285,7 +279,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
 
         //todo make arraylist and catch it here
-        msql.getMyBooking(customerBookingList);
+        //msql.getMyBooking(customerBookingList);
 
 
 
