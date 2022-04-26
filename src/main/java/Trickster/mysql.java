@@ -581,6 +581,14 @@ public class mysql {
         //Returnér booking array
         return bookingDetails;
     }
+    public void LoadBookingToDeleteAfterFiveYears() {
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute("DELETE FROM Booking WHERE Date <= NOW() - INTERVAL 5 YEAR");
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     //TEST
     /*public static ArrayList getBookingDetailsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
         //Booking array initialisér her
