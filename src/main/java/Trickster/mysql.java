@@ -666,6 +666,7 @@ public class mysql {
         int i = 0;
         LoginController LC = new LoginController();
         BookingDetails bookings = new BookingDetails();
+        //BookingDetails bookingArraylist<> = new BookingDetails()
         BookingDetails bookingsArray[] = new BookingDetails[getMyBookingCount(tableview)];
         try {
             Statement statement = connection.createStatement();
