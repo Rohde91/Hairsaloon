@@ -23,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -54,27 +55,26 @@ public class MyBookingController extends LoginController implements Initializabl
     private Button editCostumerBooking1;
     @FXML
     private Label AdminestratorLabel;
-public class MyBookingController implements Initializable {
+public class MyBookingController implements Initializable{
     mysql msql = mysql.getInstance();
 
     @FXML
-    private Button editCostumer1;
-    @FXML
-    private Label MedarbejderLabel;
+    private Button createBookingButton;
+
     @FXML
     private Button createcustomer;
 
     private Button findCostumer1;
     @FXML
-    private Button createCostumer1;
+    private Button editBookingButton;
+
     @FXML
-    private Button findBooking;
+    private Button findBookingButton;
     @FXML
     private TableView<?> costumerBookingList;
 
     @FXML
     private Button createBooking;
-
 
 
     @FXML
@@ -87,6 +87,12 @@ public class MyBookingController implements Initializable {
 
     @FXML
     private Button logoutButton;
+
+    @FXML
+    private AnchorPane myBookingAncorpane;
+
+    @FXML
+    private Button myBookingButton;
 
     @FXML
     void costumerBookingList(ActionEvent event) {
@@ -203,6 +209,7 @@ public class MyBookingController implements Initializable {
 
     }
 
+    //get overwritten in in initialize method - not sure where or how
     @FXML
     void myBookingScene(ActionEvent event) {
         Parent root = null;
@@ -234,16 +241,23 @@ public class MyBookingController implements Initializable {
 
 
 
-    //@FXML
-    //private TableView<BookingDetails> customerBookingList;
 
     @FXML
     private TableView<BookingDetails> customerBookingList;
 
     private final ObservableList<BookingDetails> data =
             FXCollections.observableArrayList(
-              msql.getMyBooking(customerBookingList)
-              //Kald BookingDetails her...
+                    msql.getMyBooking(customerBookingList)
+
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+                    //Kald BookingDetails her...
+
             );
 
 
@@ -254,6 +268,14 @@ public class MyBookingController implements Initializable {
 
         label.setFont(new Font("Arial", 20));
 
+
+
+
+
+
+        //TODO
+        //Throw all of this into its own method in sql and call it in initialize
+        //also just use setters and getters where ever necessary
         customerBookingList.setEditable(true);
 
         TableColumn column_Date = new TableColumn("Dato");
@@ -290,9 +312,15 @@ public class MyBookingController implements Initializable {
         vbox.setPadding(new Insets(10,0,0,10));
         vbox.getChildren().addAll(label, customerBookingList);
 
+        //javafx.fxml.LoadException:
+        ///D:/Datamatiker/2nd%20semester/projekter/Hairsaloon/target/classes/com/groupwork/hairsaloon/MyBookingScene.fxml
+
+        //Cannot invoke "javafx.scene.Scene.getRoot()" because the return value of "javafx.scene.control.TableView.getScene()" is null
+                // TODO this is not a scene thats why it fails
         ((Group) customerBookingList.getScene().getRoot()).getChildren().addAll(vbox);
 
     }
+
 
 }
     @Override

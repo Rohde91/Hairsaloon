@@ -40,6 +40,7 @@ public class BookingDetails {
     private SimpleStringProperty simple_treatmentDuration;
     private SimpleStringProperty simple_treatmentPrice;
 
+
     public BookingDetails(SimpleStringProperty simple_time, SimpleStringProperty simple_date, SimpleStringProperty simple_employeeName, SimpleStringProperty simple_treatmentName, SimpleStringProperty simple_treatmentDuration, SimpleStringProperty simple_treatmentPrice) {
         this.simple_time = simple_time;
         this.simple_date = simple_date;
