@@ -320,18 +320,13 @@ public class CreateBooking_Controller extends LoginController implements Initial
         startdatoLabel.setText(CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0).toString());
         slutdatoLabel.setText(CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4).toString());
 
-        //Opretter array af bookinger med valgt frisør og indenfor start -og slutdato.
+        //Opretter array af bookinger med valgt frisør og indenfor start og slutdato.
         ArrayList<Booking> bookings = new ArrayList();
         bookings = mysql.getBookingsByWeekAndEmployee(
                 mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
                 CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
 
-        //TODO KAN FJERNES!
-        ArrayList<BookingDetails> bookingDetails = new ArrayList();
-        bookingDetails = msql.getBookingDetailsByWeekAndEmployee(mysql.getFk_EmployeeID(chooseStylist.getValue().toString()),
-                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(0),
-                CalenderFunctions.getAllDaysOfTheWeek(WeekSpinner.getValue(), Locale.ENGLISH).get(4));
 
         clearLabels();
 
