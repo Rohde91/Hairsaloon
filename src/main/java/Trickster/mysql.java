@@ -511,13 +511,18 @@ public class mysql {
         return id;
     }
 
-
+     // for popup menu to see all detail about appointment but wont use it
     public static ArrayList getBookingDetailsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
         //Booking array initialisér her
         ArrayList<BookingDetails> bookingDetails = new ArrayList();
         try {
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM ((Booking INNER JOIN Customer ON Booking.fk_CustomerID = Customer.CustomerID) INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID) INNER JOIN Employee ON Booking.fk_EmployeeID = Employee.EmployeeID WHERE (((Booking.Date)>='" + startDate + "') AND ((Booking.fk_employeeID)=" + fk_employeeID + ")) OR (((Booking.Date)<='" + endDate + "') AND ((Booking.fk_employeeID)=" + fk_employeeID + "))";
+            String sql = "SELECT * FROM ((Booking " +
+                    "INNER JOIN Customer ON Booking.fk_CustomerID = Customer.CustomerID) " +
+                    "INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID) " +
+                    "INNER JOIN Employee ON Booking.fk_EmployeeID = Employee.EmployeeID " +
+                    "WHERE (((Booking.Date)>='" + startDate + "') " + "AND ((Booking.fk_employeeID)=" + fk_employeeID + ")) " +
+                    "OR (((Booking.Date)<='" + endDate + "') " + "AND ((Booking.fk_employeeID)=" + fk_employeeID + "))";
             ResultSet resultsetIDs = statement.executeQuery(sql);
             while (resultsetIDs.next()) {
                 //TODO Opret bookingdetails her og tilføj til array
@@ -671,7 +676,7 @@ public class mysql {
         try {
             Statement statement = connection.createStatement();
 
-            //sql finds the users bookings by making a big innerjoin and then looking at LoginController.user
+            //sql finds the users bookings by making a big inner join and then looking at LoginController.user
             String sql = "SELECT * FROM ((Booking " +
                     "INNER JOIN Customer ON Booking.fk_CustomerID = Customer.CustomerID)" +
                     " INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID)" +
@@ -708,7 +713,7 @@ public class mysql {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return bookingsArray;
+        return bookingArraylist;
     }
 
     //counts the number of bookings from "today" and forward
