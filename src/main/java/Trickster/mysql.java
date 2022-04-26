@@ -661,6 +661,7 @@ public class mysql {
     //private TableView<BookingDetails> tableview;
 
     //makes an array of the users bookings and returns that
+    //todo make it an arraylist!
     public BookingDetails[] getMyBooking (TableView tableview){
         int i = 0;
         LoginController LC = new LoginController();
