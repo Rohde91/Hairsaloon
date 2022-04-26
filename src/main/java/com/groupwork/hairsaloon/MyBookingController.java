@@ -1,16 +1,12 @@
 package com.groupwork.hairsaloon;
 
-import Trickster.User;
 import Trickster.mysql;
 import Trickster.BookingDetails;
-import Trickster.mysql;
-import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -18,7 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,7 +24,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.net.URL;
 import java.sql.Time;
 import java.util.Date;
@@ -242,7 +236,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
 
     @FXML
-    private TableView<BookingDetails> customerBookingList;
+    private TableView <BookingDetails> customerBookingList;
 
     private final ObservableList<BookingDetails> data =
             FXCollections.observableArrayList(
@@ -278,29 +272,29 @@ public class MyBookingController extends LoginController implements Initializabl
 
         customerBookingList.setEditable(true);
 
-        TableColumn column_Date = new TableColumn("Dato");
+        TableColumn<BookingDetails, Date> column_Date = new TableColumn<>("Dato");
         column_Date.setMinWidth(100);
-        column_Date.setCellValueFactory(new PropertyValueFactory<BookingDetails, Date>("date"));
+        column_Date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        TableColumn column_Time = new TableColumn("Tid");
+        TableColumn<BookingDetails, Time> column_Time = new TableColumn<>("Tid");
         column_Time.setMinWidth(100);
-        column_Time.setCellValueFactory(new PropertyValueFactory<BookingDetails, Time>("time"));
+        column_Time.setCellValueFactory(new PropertyValueFactory<>("time"));
 
-        TableColumn column_EmpName = new TableColumn("Frisør");
+        TableColumn<BookingDetails, String> column_EmpName = new TableColumn<>("Frisør");
         column_EmpName.setMinWidth(100);
-        column_EmpName.setCellValueFactory(new PropertyValueFactory<BookingDetails, String>("employeeName"));
+        column_EmpName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
 
-        TableColumn column_TreatmentName = new TableColumn("Behandling");
+        TableColumn<BookingDetails, String> column_TreatmentName = new TableColumn<>("Behandling");
         column_TreatmentName.setMinWidth(100);
-        column_TreatmentName.setCellValueFactory(new PropertyValueFactory<BookingDetails, String>("treatmentName"));
+        column_TreatmentName.setCellValueFactory(new PropertyValueFactory<>("treatmentName"));
 
-        TableColumn column_TreatmentDuration = new TableColumn("Varighed");
+        TableColumn<BookingDetails, String> column_TreatmentDuration = new TableColumn<>("Varighed");
         column_TreatmentDuration.setMinWidth(100);
-        column_TreatmentDuration.setCellValueFactory(new PropertyValueFactory<BookingDetails, String>("treatmentDuration"));
+        column_TreatmentDuration.setCellValueFactory(new PropertyValueFactory<>("treatmentDuration"));
 
-        TableColumn column_TreatmentPrice = new TableColumn("Pris");
+        TableColumn<BookingDetails, String> column_TreatmentPrice = new TableColumn<>("Pris");
         column_TreatmentPrice.setMinWidth(100);
-        column_TreatmentPrice.setCellValueFactory(new PropertyValueFactory<BookingDetails, String>("treatmentPrice"));
+        column_TreatmentPrice.setCellValueFactory(new PropertyValueFactory<>("treatmentPrice"));
 
         customerBookingList.setItems(data);
 

@@ -652,7 +652,7 @@ public class mysql {
     //@FXML
     //private TableView<BookingDetails> tableview;
 
-
+    //makes an array of the users bookings and returns that
     public BookingDetails[] getMyBooking (TableView tableview){
         LoginController LC = new LoginController();
         BookingDetails bookings = new BookingDetails();
@@ -660,6 +660,8 @@ public class mysql {
         BookingDetails bookingsArray[] = new BookingDetails[getMyBookingCount(tableview)];
         try {
             Statement statement = connection.createStatement();
+
+            //sql finds the users bookings by making a big innerjoin and then looking at LoginController.user
             String sql = "SELECT * FROM ((Booking " +
                     "INNER JOIN Customer ON Booking.fk_CustomerID = Customer.CustomerID)" +
                     " INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID)" +
@@ -699,13 +701,15 @@ public class mysql {
         return bookingsArray;
     }
 
-
+    //counts the number of bookings from "today" and forward
     public int getMyBookingCount (TableView tableview){
         LoginController LC = new LoginController();
         int i = 0;
 
         try {
             Statement statement = connection.createStatement();
+
+            //sql finds the users bookings by making a big innerjoin and then looking at LoginController.user
             String sql = "SELECT * FROM ((Booking " +
                     "INNER JOIN Customer ON Booking.fk_CustomerID = Customer.CustomerID)" +
                     " INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID)" +
@@ -722,6 +726,10 @@ public class mysql {
 
         }
     return i;
+    }
+
+    public void getMYbookingfinish (){
+
     }
 
 }
