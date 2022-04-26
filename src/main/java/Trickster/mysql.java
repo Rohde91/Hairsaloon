@@ -729,8 +729,4 @@ public class mysql {
     return i;
     }
 
-    public void getMYbookingfinish (){
-
-    }
-
 }

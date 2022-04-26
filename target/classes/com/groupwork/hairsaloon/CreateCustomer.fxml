@@ -21,8 +21,6 @@
                   <Image url="@../../../../../../png-transparent-letter-m-others.png" />
                </image>
             </ImageView>
-            //findcostumer and createcustomer namechange to -||-1
-
             <Button fx:id="createBooking" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" onAction="#createBookingScene" text="Opret aftale" />
             <Button fx:id="findBooking" layoutX="10.0" layoutY="168.0" mnemonicParsing="false" onAction="#findBookingScene" text="Find aftale" />
             <Button fx:id="findCostumer1" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#findCostumerScene" text="Find kunde" />
