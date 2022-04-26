@@ -67,4 +67,8 @@ public class LoginController {
             WrongTextLabel.setVisible(true);
         }
     }
+    @FXML
+    void createUser(ActionEvent event) {
+        goToMenu(event, "CreateUserAtLogin.fxml");
+    }
 }
