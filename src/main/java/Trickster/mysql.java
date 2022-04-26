@@ -525,23 +525,14 @@ public class mysql {
                     "OR (((Booking.Date)<='" + endDate + "') " + "AND ((Booking.fk_employeeID)=" + fk_employeeID + "))";
             ResultSet resultsetIDs = statement.executeQuery(sql);
             while (resultsetIDs.next()) {
-                //TODO Opret bookingdetails her og tilføj til array
+                //Opret bookingdetails her og tilføj til array
                BookingDetails b = new BookingDetails();
-                /* b.setBookingID(resultsetIDs.getInt(1));
-                b.setFk_customerID(resultsetIDs.getInt(2));
-                b.setTime(resultsetIDs.getTime(3));
-                b.setDate(resultsetIDs.getDate(4));
-                b.setFk_TreatmentID(resultsetIDs.getInt(5));
-                b.setFk_EmployeeID(resultsetIDs.getInt(6));
-                bookingDetails.add(b);*/
 
-                b.setBookingID(resultsetIDs.getInt(1)); // bookingID
+               b.setBookingID(resultsetIDs.getInt(1)); // bookingID
                 b.setFk_customerID(resultsetIDs.getInt(2)); // customerID
                 b.setTime(resultsetIDs.getTime(3)); // time
                 b.setDate(resultsetIDs.getDate(4)); // date
-                //resultsetIDs.getInt(5); // treatmentID
-                //resultsetIDs.getInt(6); // employeeID
-                //resultsetIDs.getInt(7); // customerID
+
                 b.setCustomerName(resultsetIDs.getString(8)); // customerName
                 b.setCustomerEmail(resultsetIDs.getString(9)); // customerEmail
                 b.setCustomerPhone(resultsetIDs.getString(10)); // customerPhone
@@ -556,28 +547,6 @@ public class mysql {
                 b.setEmployeePassword(resultsetIDs.getString(19)); // employeePassword
                 b.setEmployeePhone(resultsetIDs.getString(20)); // employeePhone
                 bookingDetails.add(b);
-
-/*                System.out.print(resultsetIDs.getInt(1) + " - "); // bookingID
-                System.out.print(resultsetIDs.getInt(2) + " - "); // customerID
-                System.out.print(resultsetIDs.getTime(3) + " - "); // time
-                System.out.print(resultsetIDs.getDate(4) + " - "); // date
-                System.out.print(resultsetIDs.getInt(5) + " - "); // treatmentID
-                System.out.print(resultsetIDs.getInt(6) + " - "); // employeeID
-                System.out.print(resultsetIDs.getInt(7) + " - "); // customerID
-                System.out.print(resultsetIDs.getString(8) + " - "); // customerName
-                System.out.print(resultsetIDs.getString(9) + " - "); // customerEmail
-                System.out.print(resultsetIDs.getString(10) + " - "); // customerPhone
-                System.out.print(resultsetIDs.getString(11) + " - "); // customerPassword
-                System.out.print(resultsetIDs.getInt(12) + " - "); // treatmentID
-                System.out.print(resultsetIDs.getString(13) + " - "); // treatmentName
-                System.out.print(resultsetIDs.getString(14) + " - "); // treatmentPrice
-                System.out.print(resultsetIDs.getTime(15) + " - "); // treatment duration
-                System.out.print(resultsetIDs.getInt(16) + " - "); // employeeID
-                System.out.print(resultsetIDs.getString(17) + " - "); // employeeName
-                System.out.print(resultsetIDs.getString(18) + " - "); // employeeEmail
-                System.out.print(resultsetIDs.getString(19) + " - "); // employeePassword
-                System.out.print(resultsetIDs.getString(20) + " - "); // employeePhone
-                System.out.println("");*/
 
             }
         } catch(Exception e){
@@ -594,85 +563,12 @@ public class mysql {
             e.printStackTrace();
         }
     }
-    //TEST
-    /*public static ArrayList getBookingDetailsByWeekAndEmployee(Integer fk_employeeID, LocalDate startDate, LocalDate endDate) {
-        //Booking array initialisér her
-        ArrayList<BookingDetails> bookingDetails = new ArrayList();
-        try {
-            Statement statement = connection.createStatement();
 
-            String sql = "SELECT * FROM ((Booking INNER JOIN Customer ON Booking.fk_CustomerID = Customer.CustomerID) INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID) INNER JOIN Employee ON Booking.fk_EmployeeID = Employee.EmployeeID WHERE (((Booking.Date)>='" + startDate + "') AND ((Booking.fk_employeeID)=" + fk_employeeID + ")) OR (((Booking.Date)<='" + endDate + "') AND ((Booking.fk_employeeID)=" + fk_employeeID + "))";
+    public ArrayList<BookingDetails> getMyBooking (){
 
-            ResultSet resultsetIDs = statement.executeQuery(sql);
-
-            while (resultsetIDs.next()) {
-                //Opret booking her og tilføj til array
-/*                BookingDetails b = new BookingDetails();
-                b.setBookingID(resultsetIDs.getInt(1));
-                b.setFk_customerID(resultsetIDs.getInt(2));
-                b.setTime(resultsetIDs.getTime(3));
-                b.setDate(resultsetIDs.getDate(4));
-                b.setFk_TreatmentID(resultsetIDs.getInt(5));
-                b.setFk_EmployeeID(resultsetIDs.getInt(6));
-                bookingDetails.add(b);*/
-
-/*                System.out.println(resultsetIDs.getString(1));
-
-                System.out.println(resultsetIDs.getInt(2));
-                System.out.println(resultsetIDs.getTime(3));
-                System.out.println(resultsetIDs.getDate(4));
-                System.out.println(resultsetIDs.getInt(5));
-                System.out.println(resultsetIDs.getInt(6));
-
-                System.out.print(resultsetIDs.getString(1) + " - ");
-                System.out.print(resultsetIDs.getString(2) + " - ");
-                System.out.print(resultsetIDs.getString(3) + " - ");
-                System.out.print(resultsetIDs.getString(4) + " - ");
-                System.out.print(resultsetIDs.getString(5) + " - ");
-                System.out.print(resultsetIDs.getString(6) + " - ");
-                System.out.print(resultsetIDs.getString(7) + " - ");
-                System.out.print(resultsetIDs.getString(8) + " - ");
-                System.out.print(resultsetIDs.getString(9) + " - ");
-                System.out.print(resultsetIDs.getString(10) + " - ");
-                System.out.print(resultsetIDs.getString(11) + " - ");
-                System.out.print(resultsetIDs.getString(12) + " - ");
-                System.out.print(resultsetIDs.getString(13) + " - ");
-                System.out.println("");*/
-
-                /*System.out.println(resultsetIDs.getInt(1));
-                System.out.println(resultsetIDs.getString(2));
-                System.out.println(resultsetIDs.getString(3));
-                System.out.println(resultsetIDs.getTime(4));
-                System.out.println(resultsetIDs.getDate(5));
-                System.out.println(resultsetIDs.getString(6));
-                System.out.println(resultsetIDs.getInt(7));
-                System.out.println(resultsetIDs.getTime(8));
-                System.out.println(resultsetIDs.getString(9));
-                System.out.println(resultsetIDs.getString(10));
-                System.out.println(resultsetIDs.getInt(11));
-                System.out.println(resultsetIDs.getInt(12));
-                System.out.println(resultsetIDs.getInt(13));
-
-            }
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        //Returnér booking array
-        return bookingDetails;
-    }
-    */
-
-    //@FXML
-    //private TableView<BookingDetails> tableview;
-
-    //makes an array of the users bookings and returns that
-    //todo make it an arraylist!
-    public BookingDetails[] getMyBooking (TableView tableview){
-        int i = 0;
         LoginController LC = new LoginController();
-        BookingDetails bookings = new BookingDetails();
-        //BookingDetails bookingArraylist<> = new BookingDetails()
-        BookingDetails bookingsArray[] = new BookingDetails[getMyBookingCount(tableview)];
+        ArrayList<BookingDetails> bookingArraylist = new ArrayList<>();
+
         try {
             Statement statement = connection.createStatement();
 
@@ -685,63 +581,23 @@ public class mysql {
             ResultSet rsOfBookingID = statement.executeQuery(sql);
 
             while (rsOfBookingID.next()){
+                //makes a new booking obj
+                BookingDetails bookings = new BookingDetails();
+                //fills booking object with values
                 bookings.setDate(rsOfBookingID.getDate(4));
-                System.out.print(rsOfBookingID.getDate(4) + " - "); // date
-
                 bookings.setTime(rsOfBookingID.getTime(3));
-                System.out.print(rsOfBookingID.getTime(3) + " - "); // time
-
                 bookings.setEmployeeName(rsOfBookingID.getString(17));
-                System.out.print(rsOfBookingID.getString(17) + " - "); // employeeName
-
                 bookings.setTreatmentName(rsOfBookingID.getString(13));
-                System.out.print(rsOfBookingID.getString(13) + " - "); // treatmentName
-
                 bookings.setTreatmentDuration(rsOfBookingID.getTime(15).toString());
-                System.out.print(rsOfBookingID.getTime(15) + " - "); // treatment duration
-
                 bookings.setTreatmentPrice(rsOfBookingID.getString(14));
-                System.out.print(rsOfBookingID.getString(14) + " - "); // treatmentPrice
-
-                System.out.println("");
-
-                bookingsArray[i] = bookings;
-                System.out.println(bookingsArray[i].getTime());
-                System.out.println(i);
-                i++;
+                //adds booking object to arraylist
+                bookingArraylist.add(bookings);
+                System.out.println("booking added");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return bookingArraylist;
-    }
-
-    //counts the number of bookings from "today" and forward
-    //tODO DELETE
-    public int getMyBookingCount (TableView tableview){
-        LoginController LC = new LoginController();
-        int i = 0;
-
-        try {
-            Statement statement = connection.createStatement();
-
-            //sql finds the users bookings by making a big innerjoin and then looking at LoginController.user
-            String sql = "SELECT * FROM ((Booking " +
-                    "INNER JOIN Customer ON Booking.fk_CustomerID = Customer.CustomerID)" +
-                    " INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID)" +
-                    " INNER JOIN Employee ON Booking.fk_EmployeeID = Employee.EmployeeID " +
-                    "WHERE (((Booking.Date)>='" + LocalDate.now() + "') AND ((Booking.fk_CustomerID)=" + LC.user.getId() + "))";
-            ResultSet resultsetIDs = statement.executeQuery(sql);
-
-            while (resultsetIDs.next()){
-                i++;
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-
-        }
-    return i;
     }
 
 }
