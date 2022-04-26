@@ -38,12 +38,11 @@ public class Hairsaloon extends Application {
         //scene1.getStylesheets().add(css);
         stage.setScene(scene1);
         stage.show();
-
-
-
     }
 
     public static void main(String[] args) {
+        mysql msql = mysql.getInstance();
+        msql.LoadBookingToDeleteAfterFiveYears();
         launch();
     }
 }
