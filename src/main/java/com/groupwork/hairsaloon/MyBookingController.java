@@ -46,7 +46,7 @@ public class MyBookingController extends LoginController implements Initializabl
     private TableColumn<?, ?> columnIDEmp;
 
     @FXML
-    private TableColumn<?, ?> columnIDPrice;
+    private TableColumn<BookingDetails, String> columnIDPrice;
 
     @FXML
     private TableColumn<?, ?> columnIDTime;
@@ -273,9 +273,15 @@ public class MyBookingController extends LoginController implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ObservableList<BookingDetails> listOfBookings = FXCollections.observableArrayList();
+        ObservableList<BookingDetails> listOfBookingsToTable = FXCollections.observableArrayList();
+        /*
+        arraylist of bookings from getMyBooking
+        for or while loop that sets the bookings into listOfBookingsToTable using -> table.setItems(items); -> customerBookingList.setItems(listOfBookingsToTable);
+        then using "columnIDPrice" setCellValueFactory (new propertyValueFactory <BookingDetails,String ("columnIDPrice"));  Might have to make Time and Date to String
+        and hope to god it works
 
 
+        */
 
 
         //todo make arraylist and catch it here
