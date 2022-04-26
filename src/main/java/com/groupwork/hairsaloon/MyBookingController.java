@@ -151,7 +151,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
     @FXML
     void editBookingScene(ActionEvent event) {
-        Parent root = null;
+        Parent root;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditBokking.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -185,8 +185,8 @@ public class MyBookingController extends LoginController implements Initializabl
 
     @FXML
     void findBookingScene(ActionEvent event) {
-        Parent root = null;
-        try {
+        Parent root;
+        try{
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FindBooking.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -310,7 +310,7 @@ public class MyBookingController extends LoginController implements Initializabl
         ///D:/Datamatiker/2nd%20semester/projekter/Hairsaloon/target/classes/com/groupwork/hairsaloon/MyBookingScene.fxml
 
         //Cannot invoke "javafx.scene.Scene.getRoot()" because the return value of "javafx.scene.control.TableView.getScene()" is null
-                // TODO this is not a scene thats why it fails
+                // TODO this is not a scene that's why it fails
         ((Group) customerBookingList.getScene().getRoot()).getChildren().addAll(vbox);
 
     }
@@ -356,6 +356,6 @@ public class MyBookingController extends LoginController implements Initializabl
 //------------------------------------------------------------------------------------------------------------
     }*/
 
-    }
+}
 
 

@@ -654,9 +654,9 @@ public class mysql {
 
     //makes an array of the users bookings and returns that
     public BookingDetails[] getMyBooking (TableView tableview){
+        int i = 0;
         LoginController LC = new LoginController();
         BookingDetails bookings = new BookingDetails();
-        int i = 0;
         BookingDetails bookingsArray[] = new BookingDetails[getMyBookingCount(tableview)];
         try {
             Statement statement = connection.createStatement();
@@ -667,26 +667,26 @@ public class mysql {
                     " INNER JOIN Treatments ON Booking.fk_TreatmentID = Treatments.TreatmentID)" +
                     " INNER JOIN Employee ON Booking.fk_EmployeeID = Employee.EmployeeID " +
                     "WHERE (((Booking.Date)>='" + LocalDate.now() + "') AND ((Booking.fk_CustomerID)=" + LC.user.getId() + "))";
-            ResultSet resultsetIDs = statement.executeQuery(sql);
+            ResultSet rsOfBookingID = statement.executeQuery(sql);
 
-            while (resultsetIDs.next()){
-                bookings.setDate(resultsetIDs.getDate(4));
-                System.out.print(resultsetIDs.getDate(4) + " - "); // date
+            while (rsOfBookingID.next()){
+                bookings.setDate(rsOfBookingID.getDate(4));
+                System.out.print(rsOfBookingID.getDate(4) + " - "); // date
 
-                bookings.setTime(resultsetIDs.getTime(3));
-                System.out.print(resultsetIDs.getTime(3) + " - "); // time
+                bookings.setTime(rsOfBookingID.getTime(3));
+                System.out.print(rsOfBookingID.getTime(3) + " - "); // time
 
-                bookings.setEmployeeName(resultsetIDs.getString(17));
-                System.out.print(resultsetIDs.getString(17) + " - "); // employeeName
+                bookings.setEmployeeName(rsOfBookingID.getString(17));
+                System.out.print(rsOfBookingID.getString(17) + " - "); // employeeName
 
-                bookings.setTreatmentName(resultsetIDs.getString(13));
-                System.out.print(resultsetIDs.getString(13) + " - "); // treatmentName
+                bookings.setTreatmentName(rsOfBookingID.getString(13));
+                System.out.print(rsOfBookingID.getString(13) + " - "); // treatmentName
 
-                bookings.setTreatmentDuration(resultsetIDs.getTime(15).toString());
-                System.out.print(resultsetIDs.getTime(15) + " - "); // treatment duration
+                bookings.setTreatmentDuration(rsOfBookingID.getTime(15).toString());
+                System.out.print(rsOfBookingID.getTime(15) + " - "); // treatment duration
 
-                bookings.setTreatmentPrice(resultsetIDs.getString(14));
-                System.out.print(resultsetIDs.getString(14) + " - "); // treatmentPrice
+                bookings.setTreatmentPrice(rsOfBookingID.getString(14));
+                System.out.print(rsOfBookingID.getString(14) + " - "); // treatmentPrice
 
                 System.out.println("");
 
@@ -702,6 +702,7 @@ public class mysql {
     }
 
     //counts the number of bookings from "today" and forward
+    //tODO DELETE
     public int getMyBookingCount (TableView tableview){
         LoginController LC = new LoginController();
         int i = 0;

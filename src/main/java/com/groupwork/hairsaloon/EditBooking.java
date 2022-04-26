@@ -165,7 +165,7 @@ public class EditBooking extends LoginController implements Initializable {
 
     @FXML
     void findBookingScene(ActionEvent event) {
-        Parent root = null;
+        Parent root;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FindBooking.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
