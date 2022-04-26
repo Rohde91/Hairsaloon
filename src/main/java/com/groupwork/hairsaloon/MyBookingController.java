@@ -257,12 +257,21 @@ public class MyBookingController extends LoginController implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
+        TableColumn info = new TableColumn();
+        TableColumn date = new TableColumn();
+        TableColumn treatment = new TableColumn();
+        info.getColumns().addAll(date,treatment);
+
+
+
         msql.getMyBooking(customerBookingList);
 
-        /*final Label label = new Label("Mine aftaler");
+
+
+        final Label label = new Label("Mine aftaler");
 
         label.setFont(new Font("Arial", 20));
-
 
 
 
@@ -313,7 +322,7 @@ public class MyBookingController extends LoginController implements Initializabl
 
         //Cannot invoke "javafx.scene.Scene.getRoot()" because the return value of "javafx.scene.control.TableView.getScene()" is null
                 // TODO this is not a scene that's why it fails
-        ((Group) customerBookingList.getScene().getRoot()).getChildren().addAll(vbox);*/
+        ((Group) customerBookingList.getScene().getRoot()).getChildren().addAll(vbox);
 
     }
 
