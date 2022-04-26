@@ -653,7 +653,6 @@ public class mysql {
     //private TableView<BookingDetails> tableview;
 
     //makes an arraylist of the users bookings and returns that
-    //todo make it an arraylist!
 
     public ArrayList<BookingDetails> getMyBooking (){
         LoginController LC = new LoginController();
